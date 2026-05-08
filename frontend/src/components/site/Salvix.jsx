@@ -1,16 +1,31 @@
 import { useReveal } from "../../hooks/useReveal";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
+import Spiral, { SpiralDivider } from "./Spiral";
 
-const PROTOCOL = [
-  { step: "01", title: "Cleanse", body: "Microbiome-safe biosurfactant suspends ink-side debris without disrupting healing." },
-  { step: "02", title: "Repair", body: "Recombinant peptide complex accelerates dermal closure across freshly tattooed tissue." },
-  { step: "03", title: "Veil", body: "Botanical occlusive — squalane, sea fennel, copper — protects pigment saturation." },
+const PRODUCTS = [
+  {
+    no: "01",
+    name: "Salvix Balm",
+    tagline: "Phase II — restoration",
+    weight: "30 ml · jar",
+    body: "A semi-occlusive recovery balm rebuilt around copper-peptide GHK and biotech squalane. Locks pigment, accelerates dermal closure, leaves no greasy residue. Applied from day three through full epithelial repair.",
+    notes: ["Cu-GHK 0.1%", "Biotech squalane", "Bisabolol", "Sea fennel"],
+  },
+  {
+    no: "02",
+    name: "Salvix Glide",
+    tagline: "Phase 0 — workflow",
+    weight: "150 ml · pump",
+    body: "An ultra-clean tattooing glide formulated alongside artists. Slips the needle without clogging, conditions the skin in real time, and washes off without ghosting the stencil. Vegan, fragrance-free, pH-balanced.",
+    notes: ["Glycerin 8%", "Allantoin", "Plant lecithin", "Studio-grade pH 5.4"],
+  },
 ];
 
 const FAQS = [
-  { q: "Is SALVIX vegan and fragrance-free?", a: "Yes. Every formulation is plant-derived, biotech-grown, fragrance-free, and tested on freshly tattooed skin only." },
-  { q: "When does the protocol begin?", a: "Phase 01 is applied within 6 hours of the session. Phase 02 begins on day 3. Phase 03 maintains the work indefinitely." },
-  { q: "Where is SALVIX manufactured?", a: "Formulated in Lisbon. Filled in small batch at a CDMO certified for cosmetic biotech actives in northern Portugal." },
+  { q: "Is INQUE Salvix vegan and fragrance-free?", a: "Yes. Every formulation is plant-derived, biotech-grown, fragrance-free, and clinically tested on freshly tattooed skin only." },
+  { q: "Where is Salvix manufactured?", a: "Formulated and filled in small batch in Toronto, at a CDMO certified for cosmetic biotech actives. Every batch is traceable by lot number on the base of the jar." },
+  { q: "What is the recovery protocol?", a: "Salvix Glide during the session. Salvix Balm from day three onward, twice daily for fourteen days. Full protocol card ships with every order." },
+  { q: "Do you wholesale to studios?", a: "Yes — through the INQUE Artist Program. Studios are vetted on craft, hygiene standards, and editorial alignment." },
 ];
 
 export default function Salvix() {
@@ -19,86 +34,107 @@ export default function Salvix() {
     <section
       id="salvix"
       data-testid="salvix-section"
-      className="relative bg-[#0A0A0C] border-t border-[rgba(232,230,225,0.08)]"
+      className="relative bg-[#0B0B0D] border-t border-[rgba(236,234,228,0.08)] overflow-hidden"
     >
-      <div className="px-6 md:px-12 py-24 md:py-32">
+      {/* Subtle embossed spiral, off-canvas */}
+      <div className="absolute -left-32 top-32 pointer-events-none">
+        <Spiral size={420} stroke="#23463F" strokeWidth={0.5} opacity={0.18} rotate />
+      </div>
+
+      <div className="relative px-6 md:px-12 py-24 md:py-32">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-start">
-          {/* Left rail */}
           <aside className="md:col-span-3 md:sticky md:top-24">
-            <span className="overline" style={{ color: "#6B8570" }}>Sub-Brand — SALVIX</span>
-            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-[#A3A3A0] mt-6 leading-relaxed">
-              Biotech aftercare
-              <br />for permanent objects.
+            <span className="overline" style={{ color: "#5E8B7E" }}>Chapter — 01 / Salvix</span>
+            <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-[#9E9E98] mt-6 leading-relaxed">
+              Advanced aftercare
+              <br />for tattooed skin.
             </p>
-            <div className="hairline my-8" />
+            <div className="hairline-green my-8" />
             <ul className="space-y-3">
               {[
                 ["pH", "5.4 ± 0.2"],
                 ["Peptide", "Cu-GHK"],
                 ["Carrier", "Squalane"],
-                ["Tested", "Phase III Atelier"],
+                ["Origin", "Toronto"],
+                ["Vegan", "Certified"],
               ].map(([k, v]) => (
-                <li key={k} className="flex items-center justify-between border-b border-[rgba(232,230,225,0.08)] pb-3">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#70706D]">{k}</span>
-                  <span className="font-mono text-[11px] tracking-[0.18em] text-[#E8E6E1]">{v}</span>
+                <li key={k} className="flex items-center justify-between border-b border-[rgba(236,234,228,0.08)] pb-3">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#6A6A65]">{k}</span>
+                  <span className="font-mono text-[11px] tracking-[0.18em] text-[#ECEAE4]">{v}</span>
                 </li>
               ))}
             </ul>
           </aside>
 
-          {/* Main */}
           <div ref={ref} className="reveal md:col-span-9">
-            <h2 className="font-display font-light text-5xl sm:text-6xl lg:text-7xl text-[#E8E6E1] tracking-tight leading-[0.95]">
-              <span style={{ color: "#6B8570" }}>SALVIX.</span>{" "}
-              <em className="italic font-light text-[#A3A3A0]">A clinical aftercare</em>
+            <h2 className="font-display font-light text-5xl sm:text-6xl lg:text-7xl text-[#ECEAE4] tracking-tight leading-[0.95]">
+              <em className="italic font-light text-[#9E9E98]">Skin recovery,</em>
               <br />
-              for the gothic body.
+              elevated.
             </h2>
 
-            <p className="font-body text-[16px] leading-relaxed text-[#A3A3A0] mt-10 max-w-2xl">
-              SALVIX is the in-house aftercare system of Obsidian Atelier — a
-              three-phase biotech protocol developed alongside dermatologists
-              to hold pigment, accelerate dermal closure, and preserve the
-              integrity of every line we draw.
+            <p className="font-body text-[16px] leading-relaxed text-[#9E9E98] mt-10 max-w-2xl">
+              Salvix is the in-house biotech protocol of INQUE — a two-piece
+              system of <em>Glide</em> and <em>Balm</em> that runs from the chair
+              through full dermal recovery. Built with artists, engineered for
+              healing.
             </p>
 
-            {/* Protocol grid */}
-            <div className="mt-16 grid grid-cols-1 md:grid-cols-3 border-t border-l border-[rgba(232,230,225,0.08)]">
-              {PROTOCOL.map((p) => (
-                <div
-                  key={p.step}
-                  data-testid={`protocol-${p.step}`}
-                  className="border-r border-b border-[rgba(232,230,225,0.08)] p-8 md:p-10 group transition-colors duration-500 hover:bg-[#121214]"
+            {/* Product blocks */}
+            <div className="mt-16 space-y-px bg-[rgba(236,234,228,0.08)] border border-[rgba(236,234,228,0.08)]">
+              {PRODUCTS.map((p) => (
+                <article
+                  key={p.no}
+                  data-testid={`product-${p.no}`}
+                  className="grid grid-cols-1 md:grid-cols-12 gap-6 bg-[#0B0B0D] p-8 md:p-10 brushed-metal hover:bg-[#101012] transition-colors duration-700"
                 >
-                  <div className="flex items-baseline justify-between">
-                    <span className="font-mono text-[11px] uppercase tracking-[0.28em]" style={{ color: "#6B8570" }}>
-                      Phase {p.step}
+                  <div className="md:col-span-3">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.3em]" style={{ color: "#5E8B7E" }}>
+                      N° {p.no}
                     </span>
-                    <span className="block w-6 h-px bg-[#4A5D4E] group-hover:w-12 transition-all duration-500" />
+                    <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#6A6A65] mt-3">{p.tagline}</p>
+                    <p className="font-mono text-[11px] tracking-[0.18em] text-[#ECEAE4] mt-6">{p.weight}</p>
                   </div>
-                  <h3 className="font-display text-3xl md:text-4xl font-light text-[#E8E6E1] mt-8">{p.title}</h3>
-                  <p className="font-body text-[14px] text-[#A3A3A0] leading-relaxed mt-4">{p.body}</p>
-                </div>
+                  <div className="md:col-span-6">
+                    <h3 className="font-display text-4xl md:text-5xl font-light text-[#ECEAE4] tracking-tight">
+                      {p.name}
+                    </h3>
+                    <p className="font-body text-[15px] leading-relaxed text-[#9E9E98] mt-5 max-w-xl">
+                      {p.body}
+                    </p>
+                  </div>
+                  <div className="md:col-span-3 flex flex-col justify-end">
+                    <span className="overline mb-3">Active matrix</span>
+                    <ul className="space-y-2">
+                      {p.notes.map((n) => (
+                        <li key={n} className="font-mono text-[11px] tracking-[0.18em] text-[#ECEAE4]">
+                          ◦ {n}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
               ))}
             </div>
 
-            {/* FAQ accordion */}
-            <div className="mt-20">
+            <SpiralDivider className="mt-20" />
+
+            <div className="mt-12">
               <span className="overline">Q. & A.</span>
-              <Accordion type="single" collapsible className="mt-6 border-t border-[rgba(232,230,225,0.12)]">
+              <Accordion type="single" collapsible className="mt-6 border-t border-[rgba(236,234,228,0.12)]">
                 {FAQS.map((f, i) => (
                   <AccordionItem
                     key={i}
                     value={`item-${i}`}
-                    className="border-b border-[rgba(232,230,225,0.12)]"
+                    className="border-b border-[rgba(236,234,228,0.12)]"
                   >
                     <AccordionTrigger
                       data-testid={`salvix-faq-trigger-${i}`}
-                      className="font-display text-xl md:text-2xl font-light text-[#E8E6E1] hover:no-underline py-6"
+                      className="font-display text-xl md:text-2xl font-light text-[#ECEAE4] hover:no-underline py-6"
                     >
                       {f.q}
                     </AccordionTrigger>
-                    <AccordionContent className="font-body text-[14px] text-[#A3A3A0] leading-relaxed pb-8 max-w-2xl">
+                    <AccordionContent className="font-body text-[14px] text-[#9E9E98] leading-relaxed pb-8 max-w-2xl">
                       {f.a}
                     </AccordionContent>
                   </AccordionItem>

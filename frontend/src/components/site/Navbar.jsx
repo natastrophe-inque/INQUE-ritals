@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
+import { SpiralMark } from "./Spiral";
 
 const NAV_ITEMS = [
-  { id: "tattoos", label: "Tattoos" },
-  { id: "salvix", label: "SALVIX" },
+  { id: "salvix", label: "Salvix" },
   { id: "program", label: "Artist Program" },
-  { id: "inquire", label: "Inquire" },
+  { id: "about", label: "About" },
+  { id: "contact", label: "Contact" },
 ];
 
 export default function Navbar() {
@@ -26,16 +27,19 @@ export default function Navbar() {
     <header
       data-testid="site-navbar"
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 ${
-        scrolled ? "bg-[#0A0A0C]/85 backdrop-blur-md border-b border-[rgba(232,230,225,0.08)]" : ""
+        scrolled ? "bg-[#0B0B0D]/85 backdrop-blur-md border-b border-[rgba(236,234,228,0.08)]" : ""
       }`}
     >
       <div className="flex items-center justify-between px-6 md:px-12 h-16 md:h-20">
         <button
           data-testid="brand-logo"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="font-display text-[22px] md:text-[26px] tracking-[0.2em] text-[#E8E6E1] hover:text-white transition-colors"
+          className="flex items-center gap-3 group"
         >
-          OBSIDIAN
+          <SpiralMark size={20} className="opacity-80 group-hover:opacity-100 transition-opacity" />
+          <span className="font-display text-[22px] md:text-[26px] tracking-[0.32em] text-[#ECEAE4]">
+            INQUE
+          </span>
         </button>
 
         <nav className="hidden md:flex items-center gap-10">
@@ -44,7 +48,7 @@ export default function Navbar() {
               key={item.id}
               data-testid={`nav-${item.id}`}
               onClick={() => handleClick(item.id)}
-              className="font-mono text-[11px] uppercase tracking-[0.28em] text-[#A3A3A0] hover:text-[#E8E6E1] transition-colors"
+              className="font-mono text-[11px] uppercase tracking-[0.3em] text-[#9E9E98] hover:text-[#ECEAE4] transition-colors"
             >
               {item.label}
             </button>
@@ -54,21 +58,21 @@ export default function Navbar() {
         <button
           data-testid="mobile-menu-toggle"
           onClick={() => setOpen(!open)}
-          className="md:hidden font-mono text-[11px] uppercase tracking-[0.28em] text-[#E8E6E1]"
+          className="md:hidden font-mono text-[11px] uppercase tracking-[0.3em] text-[#ECEAE4]"
         >
           {open ? "Close" : "Menu"}
         </button>
       </div>
 
       {open && (
-        <div data-testid="mobile-menu" className="md:hidden bg-[#0A0A0C] border-t border-[rgba(232,230,225,0.08)] px-6 py-8">
+        <div data-testid="mobile-menu" className="md:hidden bg-[#0B0B0D] border-t border-[rgba(236,234,228,0.08)] px-6 py-8">
           <div className="flex flex-col gap-6">
             {NAV_ITEMS.map((item) => (
               <button
                 key={item.id}
                 data-testid={`mobile-nav-${item.id}`}
                 onClick={() => handleClick(item.id)}
-                className="text-left font-mono text-[12px] uppercase tracking-[0.3em] text-[#A3A3A0] hover:text-[#E8E6E1]"
+                className="text-left font-mono text-[12px] uppercase tracking-[0.3em] text-[#9E9E98] hover:text-[#ECEAE4]"
               >
                 — {item.label}
               </button>

@@ -5,23 +5,23 @@ import { Toaster } from "sonner";
 import Navbar from "./components/site/Navbar";
 import Marquee from "./components/site/Marquee";
 import Hero from "./components/site/Hero";
-import Tattoos from "./components/site/Tattoos";
 import Salvix from "./components/site/Salvix";
 import ArtistProgram from "./components/site/ArtistProgram";
-import Inquire from "./components/site/Inquire";
+import About from "./components/site/About";
+import Contact from "./components/site/Contact";
 import Footer from "./components/site/Footer";
 
 function Home() {
   return (
-    <main className="bg-[#0A0A0C] text-[#E8E6E1] min-h-screen">
+    <main className="bg-[#0B0B0D] text-[#ECEAE4] min-h-screen">
       <Navbar />
       <Hero />
       <Marquee />
-      <Tattoos />
-      <Marquee />
       <Salvix />
+      <Marquee />
       <ArtistProgram />
-      <Inquire />
+      <About />
+      <Contact />
       <Footer />
     </main>
   );
@@ -35,9 +35,9 @@ function App() {
         position="bottom-right"
         toastOptions={{
           style: {
-            background: "#121214",
-            border: "1px solid rgba(232,230,225,0.12)",
-            color: "#E8E6E1",
+            background: "#101012",
+            border: "1px solid rgba(94,139,126,0.28)",
+            color: "#ECEAE4",
             borderRadius: 0,
             fontFamily: "Outfit, sans-serif",
             fontSize: "13px",

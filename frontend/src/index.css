@@ -5,25 +5,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@200;300;400;500&family=Space+Mono:wght@400;700&display=swap');
 
 :root {
-    --bg-primary: #0A0A0C;
-    --bg-secondary: #121214;
-    --bg-tertiary: #1A1C1A;
-    --text-primary: #E8E6E1;
-    --text-secondary: #A3A3A0;
-    --text-muted: #70706D;
-    --accent-green: #4A5D4E;
-    --accent-green-light: #6B8570;
-    --border-default: rgba(232, 230, 225, 0.10);
-    --border-hover: rgba(232, 230, 225, 0.30);
+    --bg-primary: #0B0B0D;
+    --bg-secondary: #101012;
+    --bg-tertiary: #15171A;
+
+    --text-primary: #ECEAE4;
+    --text-secondary: #9E9E98;
+    --text-muted: #6A6A65;
+
+    --inque-green-deep: #1A3A34;
+    --inque-green: #23463F;
+    --inque-green-mid: #2B4F47;
+    --inque-green-light: #5E8B7E;
+    --inque-steel: #8A9590;
+
+    --border-default: rgba(236, 234, 228, 0.08);
+    --border-hover: rgba(236, 234, 228, 0.22);
+    --border-green: rgba(94, 139, 126, 0.28);
 
     --font-display: 'Cormorant Garamond', serif;
     --font-body: 'Outfit', sans-serif;
     --font-mono: 'Space Mono', monospace;
 }
 
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 html, body, #root {
     background-color: var(--bg-primary);
@@ -40,32 +45,31 @@ body {
 }
 
 ::selection {
-    background: var(--accent-green);
+    background: var(--inque-green-deep);
     color: var(--text-primary);
 }
 
-/* ---- Shadcn dark base ---- */
 @layer base {
     :root {
         --background: 240 7% 4%;
-        --foreground: 40 10% 89%;
+        --foreground: 42 14% 91%;
         --card: 240 5% 7%;
-        --card-foreground: 40 10% 89%;
+        --card-foreground: 42 14% 91%;
         --popover: 240 5% 7%;
-        --popover-foreground: 40 10% 89%;
-        --primary: 40 10% 89%;
+        --popover-foreground: 42 14% 91%;
+        --primary: 42 14% 91%;
         --primary-foreground: 240 7% 4%;
-        --secondary: 120 4% 11%;
-        --secondary-foreground: 40 10% 89%;
-        --muted: 120 4% 11%;
-        --muted-foreground: 40 2% 64%;
-        --accent: 130 11% 33%;
-        --accent-foreground: 40 10% 89%;
+        --secondary: 168 36% 16%;
+        --secondary-foreground: 42 14% 91%;
+        --muted: 220 5% 11%;
+        --muted-foreground: 40 2% 62%;
+        --accent: 165 19% 46%;
+        --accent-foreground: 240 7% 4%;
         --destructive: 0 60% 45%;
-        --destructive-foreground: 40 10% 89%;
-        --border: 40 10% 89% / 0.1;
-        --input: 40 10% 89% / 0.15;
-        --ring: 130 11% 33%;
+        --destructive-foreground: 42 14% 91%;
+        --border: 42 14% 91% / 0.08;
+        --input: 42 14% 91% / 0.14;
+        --ring: 165 19% 46%;
         --radius: 0;
     }
 }
@@ -75,7 +79,6 @@ body {
     body { @apply bg-background text-foreground; }
 }
 
-/* ---- Typography utilities ---- */
 .font-display { font-family: var(--font-display); }
 .font-body { font-family: var(--font-body); }
 .font-mono { font-family: var(--font-mono); }
@@ -84,7 +87,7 @@ body {
     font-family: var(--font-mono);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.28em;
+    letter-spacing: 0.32em;
     color: var(--text-muted);
 }
 
@@ -92,7 +95,7 @@ body {
 .marquee-track {
     display: flex;
     width: max-content;
-    animation: marquee 60s linear infinite;
+    animation: marquee 70s linear infinite;
 }
 
 @keyframes marquee {
@@ -103,17 +106,13 @@ body {
 /* ---- Reveal ---- */
 .reveal {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1),
-                transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: translateY(20px);
+    transition: opacity 1.4s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 1.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
+.reveal.visible { opacity: 1; transform: translateY(0); }
 
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ---- Inputs (clinical bottom-border) ---- */
+/* ---- Inputs ---- */
 .line-input {
     width: 100%;
     background: transparent;
@@ -125,29 +124,18 @@ body {
     font-weight: 300;
     font-size: 15px;
     outline: none;
-    transition: border-color 0.4s ease;
+    transition: border-color 0.5s ease;
 }
-
-.line-input::placeholder {
-    color: var(--text-muted);
-}
-
-.line-input:focus {
-    border-bottom-color: var(--accent-green-light);
-}
-
-textarea.line-input {
-    min-height: 110px;
-    resize: vertical;
-    line-height: 1.6;
-}
+.line-input::placeholder { color: var(--text-muted); }
+.line-input:focus { border-bottom-color: var(--inque-green-light); }
+textarea.line-input { min-height: 110px; resize: vertical; line-height: 1.6; }
 
 /* ---- Sharp button ---- */
 .btn-sharp {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 14px;
     padding: 18px 32px;
     border: 1px solid var(--text-primary);
     background: transparent;
@@ -155,47 +143,45 @@ textarea.line-input {
     font-family: var(--font-mono);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.28em;
+    letter-spacing: 0.3em;
     cursor: pointer;
-    transition: background 0.4s ease, color 0.4s ease;
+    transition: background 0.5s ease, color 0.5s ease, border-color 0.5s ease;
 }
-
-.btn-sharp:hover {
-    background: var(--text-primary);
-    color: var(--bg-primary);
-}
+.btn-sharp:hover { background: var(--text-primary); color: var(--bg-primary); }
 
 .btn-sharp.green {
-    border-color: var(--accent-green-light);
-    color: var(--accent-green-light);
+    border-color: var(--inque-green-light);
+    color: var(--inque-green-light);
 }
-
 .btn-sharp.green:hover {
-    background: var(--accent-green);
+    background: var(--inque-green-deep);
     color: var(--text-primary);
-    border-color: var(--accent-green);
+    border-color: var(--inque-green-deep);
 }
 
-.btn-sharp:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
+.btn-sharp.filled-green {
+    background: var(--inque-green);
+    border-color: var(--inque-green);
+    color: var(--text-primary);
 }
-
-/* ---- Hairline divider ---- */
-.hairline {
-    height: 1px;
-    width: 100%;
-    background: var(--border-default);
+.btn-sharp.filled-green:hover {
+    background: var(--inque-green-mid);
+    border-color: var(--inque-green-mid);
 }
+.btn-sharp:disabled { opacity: 0.4; cursor: not-allowed; }
 
-/* ---- Subtle grain (clinical noise) ---- */
+/* ---- Hairlines ---- */
+.hairline { height: 1px; width: 100%; background: var(--border-default); }
+.hairline-green { height: 1px; width: 100%; background: var(--border-green); }
+
+/* ---- Grain ---- */
 .grain::before {
     content: '';
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
-    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
+    opacity: 0.05;
     mix-blend-mode: screen;
 }
 
@@ -204,11 +190,29 @@ textarea.line-input {
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(60% 40% at 80% 30%, rgba(74, 93, 78, 0.10), transparent 70%),
-      radial-gradient(40% 30% at 20% 80%, rgba(232, 230, 225, 0.04), transparent 70%);
+      radial-gradient(60% 45% at 78% 25%, rgba(43, 79, 71, 0.22), transparent 70%),
+      radial-gradient(45% 35% at 18% 80%, rgba(94, 139, 126, 0.05), transparent 70%);
     pointer-events: none;
 }
 
-/* hide scrollbar in marquee track */
+/* ---- Spiral rotation ---- */
+@keyframes spiral-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+.spiral-rotate { animation: spiral-spin 90s linear infinite; transform-origin: center; }
+.spiral-rotate-slow { animation: spiral-spin 180s linear infinite; transform-origin: center; }
+
+/* ---- Brushed metal ---- */
+.brushed-metal {
+    background:
+      linear-gradient(110deg,
+        rgba(94, 139, 126, 0.04) 0%,
+        rgba(43, 79, 71, 0.08) 30%,
+        rgba(20, 22, 24, 0.0) 55%,
+        rgba(94, 139, 126, 0.05) 80%,
+        rgba(43, 79, 71, 0.04) 100%);
+}
+
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
