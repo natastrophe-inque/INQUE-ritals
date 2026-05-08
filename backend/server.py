@@ -18,7 +18,7 @@ mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
-app = FastAPI(title="OBSIDIAN ATELIER API")
+app = FastAPI(title="INQUE API")
 api_router = APIRouter(prefix="/api")
 
 
