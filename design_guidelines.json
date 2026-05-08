@@ -1,0 +1,108 @@
+{
+  "theme": "dark",
+  "archetype": "5 (Jewel & Luxury) mixed with 4 (Swiss & High-Contrast)",
+  "brand_identity": {
+    "concept": "Gothic luxury tattoo artist and biotech-inspired aftercare brand (SALVIX)",
+    "vibe": "Minimal black editorial aesthetic, high-end fashion/skincare feel (Rick Owens, Ann Demeulemeester, AESOP).",
+    "core_principles": [
+      "Text-driven editorial layout: Typography creates the structure.",
+      "Clinical luxury: Merge gothic artistry with precise biotech aesthetic for the SALVIX brand.",
+      "Mobile-first: Strict grid scaling, heavy typography emphasis over imagery on smaller screens.",
+      "Brutalist minimal surfaces: No soft shadows. Use sharp 1px borders and high-contrast transitions."
+    ]
+  },
+  "colors": {
+    "background": {
+      "primary": "#0A0A0C",
+      "secondary": "#121214",
+      "tertiary": "#1A1C1A"
+    },
+    "text": {
+      "primary": "#E8E6E1",
+      "secondary": "#A3A3A0",
+      "muted": "#70706D"
+    },
+    "accent": {
+      "salvix_green": "#4A5D4E",
+      "salvix_green_light": "#6B8570",
+      "clinical_white": "#FFFFFF"
+    },
+    "border": {
+      "default": "rgba(232, 230, 225, 0.1)",
+      "hover": "rgba(232, 230, 225, 0.3)"
+    }
+  },
+  "typography": {
+    "fonts": {
+      "heading": "Cormorant Garamond, serif",
+      "body": "Outfit, sans-serif",
+      "technical": "Space Mono, monospace"
+    },
+    "scale_rules": {
+      "h1": "text-5xl sm:text-6xl lg:text-7xl font-light tracking-tighter leading-none",
+      "h2": "text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight",
+      "h3": "text-xl sm:text-2xl font-light",
+      "body": "text-base leading-relaxed tracking-wide",
+      "overline": "text-xs font-technical uppercase tracking-[0.2em]"
+    },
+    "usage": [
+      "Use Cormorant Garamond for all major brand statements, emotional hooks, and artist presence.",
+      "Use Space Mono for SALVIX clinical data, ingredient lists, step numbers, and form labels.",
+      "Use Outfit for readable body paragraphs and general descriptive text."
+    ]
+  },
+  "layout_and_spacing": {
+    "spacing_scale": "Generous spacing. Use p-8, p-12, p-24, p-32. Create breathing room between editorial sections.",
+    "grid_system": "The Tetris Grid (Asymmetric). grid-cols-1 on mobile, md:grid-cols-12. Avoid perfect symmetry.",
+    "surface_strategy": "Grid Borders (The Technical Look). Exposed skeleton, 1px subtle borders (border-[#1A1C1A]). No glassmorphism, no drop shadows. Raw luxury."
+  },
+  "motion_and_interactions": {
+    "global": "Lenis smooth scrolling is MANDATORY. High-end fashion websites rely on momentum scrolling to feel premium.",
+    "hover_states": "Text color brightens, border opacity increases. No bouncy scaling. Strict, elegant fade-ins.",
+    "page_load": "Slow staggered fade-in of typography. No aggressive fly-ins. Opacity from 0 to 1 over 1.2s.",
+    "scroll_reveals": "Images and text blocks reveal via Framer Motion with ease: [0.25, 1, 0.5, 1]."
+  },
+  "components": {
+    "buttons": "Flat, sharp corners (rounded-none). 1px border. Hover: invert background and text. Font: Space Mono or uppercase Outfit.",
+    "forms": "Shadcn UI forms but heavily customized. Use border-b only for inputs (no full box). Minimalist clinical aesthetic.",
+    "accordions": "For Artist Program FAQs or SALVIX details. Clean 1px top/bottom border, plus sign icon. High contrast open state.",
+    "marquees": "Slow Editorial Ribbon. Use Space Mono, uppercase, pale text. E.g., 'SALVIX BIOTECH RECOVERY / ARTIST PROGRAM / LUXURY TATTOO'"
+  },
+  "sections_guide": {
+    "hero": "Massive typography. 'GOTHIC LUXURY'. Full-screen dark container. Abstract fluid texture faintly in the background.",
+    "tattoos_portfolio": "Text-driven editorial grid. 1px borders separating content. Staggered imagery.",
+    "salvix_brand": "Clinical shift. Introduce the muted green accent (#4A5D4E) in typography highlights or borders. Monospace stats.",
+    "artist_program": "Structured mentorship intake. Numbered lists (Space Mono), high contrast headers.",
+    "contact_booking": "Minimalist form. No public booking system. 'Inquire' button routing to email. Minimal input fields with bottom-borders only."
+  },
+  "media": {
+    "image_urls": {
+      "hero_abstract": {
+        "url": "https://images.unsplash.com/photo-1705254613799-da8cea6925bc?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGJsYWNrJTIwZmx1aWR8ZW58MHx8fHwxNzc4Mjc0NzI3fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Abstract black fluid texture for hero background or subtle overlay."
+      },
+      "salvix_botanical": {
+        "url": "https://images.unsplash.com/photo-1761426457327-6e848190af28?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA0MTJ8MHwxfHNlYXJjaHwxfHxkYXJrJTIwYm90YW5pY2FsJTIwdGV4dHVyZXxlbnwwfHx8fDE3NzgyNzQ3Mjd8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Dark botanical texture to represent the biotech/muted green SALVIX aftercare vibe."
+      },
+      "editorial_fashion_1": {
+        "url": "https://images.unsplash.com/photo-1642015927416-2811fcccbd04?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODF8MHwxfHNlYXJjaHwyfHxkYXJrJTIwZWRpdG9yaWFsJTIwZmFzaGlvbnxlbnwwfHx8fDE3NzgyNzQ3MDR8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Dark editorial fashion placeholder for the Gothic Artist vibe."
+      },
+      "editorial_fashion_2": {
+        "url": "https://images.unsplash.com/photo-1642015927385-7789187dc913?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODF8MHwxfHNlYXJjaHwxfHxkYXJrJTIwZWRpdG9yaWFsJTIwZmFzaGlvbnxlbnwwfHx8fDE3NzgyNzQ3MDR8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Secondary editorial fashion shot for layout balance."
+      }
+    },
+    "treatment": "Images MUST be filtered with grayscale or low saturation to match the dark aesthetic. Overlays must not exceed 50% opacity if text is placed on them."
+  },
+  "testing": {
+    "attributes": "Add data-testid to all interactive elements (forms, inputs, buttons, accordions). Example: data-testid='booking-submit-button'"
+  },
+  "instructions_to_main_agent": [
+    "Strictly adhere to the color palette. Do not use generic tailwind grays (slate/gray). Use the defined custom hex codes.",
+    "Ensure 'Cormorant Garamond' and 'Space Mono' are imported via Google Fonts or similar.",
+    "Do not build a functional booking calendar. The user requested a contact/consultation form only.",
+    "Mobile-first: ensure the text scales correctly and grid items stack cleanly on mobile."
+  ]
+}
