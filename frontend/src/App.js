@@ -5,6 +5,7 @@ import { Toaster } from "sonner";
 import Navbar from "./components/site/Navbar";
 import Marquee from "./components/site/Marquee";
 import Hero from "./components/site/Hero";
+import BrandPhilosophy from "./components/site/BrandPhilosophy";
 import Salvix from "./components/site/Salvix";
 import ArtistProgram from "./components/site/ArtistProgram";
 import About from "./components/site/About";
@@ -17,6 +18,7 @@ function Home() {
       <Navbar />
       <Hero />
       <Marquee />
+      <BrandPhilosophy />
       <Salvix />
       <Marquee />
       <ArtistProgram />

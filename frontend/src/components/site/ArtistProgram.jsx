@@ -27,6 +27,20 @@ export default function ArtistProgram() {
       data-testid="program-section"
       className="relative bg-[#0B0B0D] border-t border-[rgba(236,234,228,0.08)] overflow-hidden"
     >
+      {/* Atmospheric backdrop */}
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-[0.16]"
+        style={{
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1642015927416-2811fcccbd04?crop=entropy&cs=srgb&fm=jpg&q=85&w=2000')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          filter: "grayscale(100%) contrast(1.05) brightness(0.55)",
+        }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0B0B0D] via-[#0B0B0D]/85 to-[#0B0B0D]" />
+
       <div className="absolute right-[-160px] bottom-[-120px] pointer-events-none">
         <Spiral size={520} stroke="#2B4F47" strokeWidth={0.4} opacity={0.18} rotate />
       </div>

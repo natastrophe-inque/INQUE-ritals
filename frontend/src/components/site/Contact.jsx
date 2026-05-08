@@ -70,6 +70,19 @@ export default function Contact() {
       data-testid="contact-section"
       className="relative bg-[#0B0B0D] border-t border-[rgba(236,234,228,0.08)] overflow-hidden"
     >
+      {/* Soft metallic green closing glow */}
+      <div
+        aria-hidden
+        className="metal-glow"
+        style={{
+          width: "90vw",
+          height: "60vw",
+          left: "50%",
+          bottom: "-30vw",
+          transform: "translateX(-50%)",
+          opacity: 0.7,
+        }}
+      />
       <div className="absolute -left-40 -bottom-40 pointer-events-none">
         <Spiral size={560} stroke="#1A3A34" strokeWidth={0.4} opacity={0.22} rotate />
       </div>
