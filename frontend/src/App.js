@@ -3,12 +3,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "sonner";
 
 import Navbar from "./components/site/Navbar";
-import Marquee from "./components/site/Marquee";
 import Hero from "./components/site/Hero";
-import BrandPhilosophy from "./components/site/BrandPhilosophy";
+import Manifesto from "./components/site/BrandPhilosophy";
 import Salvix from "./components/site/Salvix";
 import ArtistProgram from "./components/site/ArtistProgram";
-import About from "./components/site/About";
 import Contact from "./components/site/Contact";
 import Footer from "./components/site/Footer";
 
@@ -17,12 +15,9 @@ function Home() {
     <main className="bg-[#0B0B0D] text-[#ECEAE4] min-h-screen">
       <Navbar />
       <Hero />
-      <Marquee />
-      <BrandPhilosophy />
+      <Manifesto />
       <Salvix />
-      <Marquee />
       <ArtistProgram />
-      <About />
       <Contact />
       <Footer />
     </main>

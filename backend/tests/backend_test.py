@@ -122,6 +122,33 @@ class TestArtistApplications:
         assert data["statement"] == payload["statement"]
         assert "_id" not in data
 
+    def test_create_iteration4_minimal_payload(self, session):
+        """Iteration 4 frontend ArtistProgram.jsx payload: artist→full_name, message→statement.
+        Only sends full_name, email, location, instagram, statement (no portfolio_url, no years_experience)."""
+        payload = {
+            "full_name": "TEST_Iter4 Artist",
+            "email": "test_iter4@example.com",
+            "location": "Toronto, CA",
+            "instagram": "@iter4_artist",
+            "statement": "Dedicated tattoo artist with a focus on fine-line minimal work, applying for the program.",
+        }
+        r = session.post(f"{API}/artist-applications", json=payload)
+        assert r.status_code == 201, r.text
+        data = r.json()
+        assert data["full_name"] == payload["full_name"]
+        assert data["email"] == payload["email"]
+        assert data["location"] == payload["location"]
+        assert data["instagram"] == payload["instagram"]
+        assert data["statement"] == payload["statement"]
+        assert data.get("portfolio_url") is None
+        assert data.get("years_experience") is None
+
+        # Verify persistence
+        r2 = session.get(f"{API}/artist-applications")
+        assert r2.status_code == 200
+        ids = [it["id"] for it in r2.json()]
+        assert data["id"] in ids
+
     def test_short_statement_422(self, session):
         r = session.post(f"{API}/artist-applications", json={
             "full_name": "TEST_Short",

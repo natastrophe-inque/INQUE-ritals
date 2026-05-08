@@ -1,0 +1,33 @@
+{
+  "summary": "Iteration 4 (minimalist refactor) tested end-to-end. Backend: 11/11 pytest pass including new minimal artist-applications payload (artist→full_name, message→statement, no portfolio_url/years_experience). Frontend: All iteration-4 contracts verified — persistent floating brand-logo, hero-headline = 'INQUE' (no hero-cta-shop), philosophy-headline contains 'reengineered', salvix-section has product-01 + product-02 (no FAQ), simple program-form with field-artist/email/instagram/location/message/submit-program-btn, short-message validation toast (does NOT submit), valid submission → inquiry-success, contact link-only (mailto + instagram URL exact match, no form), nav-salvix/program/contact scroll correctly, nav-about absent, mobile menu shows 3 items only, brand-logo persists across scrolls.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/backend_test.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Minor: ArtistProgram.jsx success state is not reset; if user re-visits section after submission they cannot submit again until page reload. Acceptable for invitation form but worth noting.",
+    "Minor: Salvix.jsx GlassJar/GlassTube embed visible 'Salvix' / 'Balm' / 'Glide' text inside the rendered vessels in addition to the caption below; this duplicates the captions but matches iteration-4 visual design.",
+    "Minor: server.py — duplicate ISO conversion logic in list_inquiries / list_artist_applications could be DRY'd into a small helper, but not blocking.",
+    "Minor: server.py uses deprecated FastAPI on_event('shutdown'); consider lifespan handlers (non-blocking)."
+  ],
+  "updated_files": [
+    "/app/backend/tests/backend_test.py (added test_create_iteration4_minimal_payload)"
+  ],
+  "success_rate": {"backend": "100% (11/11)", "frontend": "100% on iteration-4 contracts (29/29 critical assertions)"},
+  "test_credentials": "N/A — no auth in this app",
+  "seed_data_creation": "Test data created via TEST_-prefixed inquiries and artist-applications during pytest run; persisted to MongoDB (no cleanup endpoint exists in API).",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iteration 4 is verified. Removed test IDs (do NOT test): hero-cta-shop, salvix-faq-trigger-*, principle-0/1/2, tab-*, inquire-form, field-name/phone/concept, nav-about, marquee, footer sitemap. Active iteration-4 test IDs: brand-logo, hero-section, hero-headline, philosophy-section, philosophy-headline, salvix-section, product-01, product-02, program-section, program-form, field-artist, field-email, field-instagram, field-location, field-message, submit-program-btn, inquiry-success, contact-section, contact-email-link, contact-instagram, nav-salvix, nav-program, nav-contact, mobile-menu-toggle, mobile-menu, mobile-nav-{salvix,program,contact}, site-navbar, site-footer. ArtistProgram payload mapping: artist→full_name, message→statement; backend validates statement min_length=20. Note: nav-contact scrollIntoView lands ~87px from top because contact is last section before footer — this is correct behavior, not a bug.",
+  "rca_of_the_issue": "N/A — no bugs found"
+}
