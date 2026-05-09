@@ -19,35 +19,43 @@ export default function Hero() {
     };
   }, []);
 
-  const py = (factor) => `translate3d(0, ${scrollY * factor}px, 0)`;
-
   return (
     <section
       data-testid="hero-section"
       className="relative h-[100svh] overflow-hidden bg-[#0B0B0D]"
     >
-      {/* Faint background spiral motif — entire visual atmosphere */}
+      {/* Centered snail-shell spiral — the visual centerpiece */}
       <div
         aria-hidden
-        className="absolute parallax-layer pointer-events-none"
-        style={{
-          right: "-12vw",
-          top: "10vh",
-          transform: py(-0.18),
-        }}
+        className="absolute inset-0 flex items-center justify-center pointer-events-none"
+        style={{ transform: `translate3d(0, ${-scrollY * 0.08}px, 0)` }}
       >
-        <Spiral size={620} stroke="#5E8B7E" strokeWidth={0.4} opacity={0.10} rotate />
+        <div className="spiral-breath">
+          <Spiral
+            size={760}
+            stroke="#5E8B7E"
+            strokeWidth={1.1}
+            opacity={0.7}
+            rotate
+          />
+        </div>
       </div>
+
+      {/* Soft radial glow behind the wordmark */}
       <div
         aria-hidden
-        className="absolute parallax-layer pointer-events-none"
-        style={{
-          left: "-10vw",
-          bottom: "-10vh",
-          transform: py(0.05),
-        }}
+        className="absolute inset-0 flex items-center justify-center pointer-events-none"
       >
-        <Spiral size={460} stroke="#23463F" strokeWidth={0.5} opacity={0.08} />
+        <div
+          className="rounded-full"
+          style={{
+            width: "60vmin",
+            height: "60vmin",
+            background:
+              "radial-gradient(circle at center, rgba(94,139,126,0.10) 0%, rgba(43,79,71,0.05) 35%, transparent 70%)",
+            filter: "blur(20px)",
+          }}
+        />
       </div>
 
       {/* Centered wordmark + tagline */}
@@ -57,17 +65,17 @@ export default function Hero() {
       >
         <h1
           data-testid="hero-headline"
-          className="wordmark text-center"
+          className="wordmark-metal text-center"
           style={{ transform: `translate3d(0, ${-scrollY * 0.12}px, 0)` }}
         >
           INQUE
         </h1>
 
-        <p className="font-display italic text-xl md:text-2xl font-light text-[#9E9E98] mt-12 md:mt-16 tracking-tight">
+        <p className="font-display italic text-xl md:text-2xl font-light text-[#9E9E98] mt-10 md:mt-14 tracking-tight">
           For the marked.
         </p>
 
-        <p className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.4em] text-[#6A6A65] mt-8">
+        <p className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.4em] text-[#6A6A65] mt-6">
           Biotech tattoo aftercare. Ritualized.
         </p>
       </div>

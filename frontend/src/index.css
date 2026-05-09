@@ -247,10 +247,39 @@ textarea.line-input { min-height: 110px; resize: vertical; line-height: 1.6; }
       0 0 180px rgba(94, 139, 126, 0.10);
 }
 
+/* Metallic luminous wordmark — pearlescent green-cream with soft glow,
+   matching the INQUE reference imagery. */
+.wordmark-metal {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    line-height: 0.82;
+    font-size: clamp(5rem, 16vw, 16rem);
+    background: linear-gradient(
+        180deg,
+        #C8D6CB 0%,
+        #95B1A2 28%,
+        #5E8B7E 55%,
+        #2B4F47 90%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    filter: drop-shadow(0 0 22px rgba(94, 139, 126, 0.22))
+            drop-shadow(0 0 60px rgba(43, 79, 71, 0.30));
+}
+
 .wordmark-outline {
     -webkit-text-stroke: 1px rgba(94, 139, 126, 0.45);
     color: transparent;
 }
+
+@keyframes spiral-breath {
+    0%, 100% { opacity: 0.62; transform: scale(1); }
+    50% { opacity: 0.80; transform: scale(1.015); }
+}
+.spiral-breath { animation: spiral-breath 8s ease-in-out infinite; }
 
 /* ---- Parallax ---- */
 .parallax-layer { will-change: transform; transition: transform 0.05s linear; }
