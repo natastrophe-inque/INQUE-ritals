@@ -1,0 +1,38 @@
+{
+  "summary": "Iteration 5 (gothic-luxury biotech minimal redesign) tested end-to-end. Backend: 12/12 pytest pass — added test_create_iteration5_full_payload covering full new payload (full_name, email, location, instagram, years_experience, composed statement). Frontend: 12/12 critical assertions pass — hero-headline 'INQUE' rendered with .wordmark class in deep dark green rgb(35,70,63), italic 'For the marked.' tagline + uppercase mono 'Biotech tattoo aftercare. Ritualized.' subcopy, salvix-headline contains 'Balm', 'Tattoo aftercare is outdated.' copy present, product-01/product-02 mockups removed, philosophy/Manifesto section removed, all 10 program-form fields present (field-name/studio/city/instagram/email/years/style/why/honest-feedback/shipping) with honest-feedback as <select>, short why<20 triggers toast and blocks submit, valid submission POSTs to /api/artist-applications and shows inquiry-success with correct copy, contact-email-link href=mailto:inquerituals@gmail.com, contact-instagram href=https://instagram.com/inque.rituals, nav-salvix/program/contact scroll correctly, nav-about absent, brand-logo persistent on scroll.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Hero", "issues": ["Wordmark 'INQUE' uses #23463F (deep dark green) on #0B0B0D background — measured contrast is very low and the wordmark is nearly invisible in screenshots until the subtle green text-shadow kicks in. This is per iteration-5 spec ('gothic-luxury, subtle glow') but flag for accessibility/readability — consider stronger glow or slight lightening if it must be readable on first paint."]}
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/backend_test.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [
+    "Optional: Increase wordmark visibility on hero (stronger green glow / slightly lighter base color) if readability matters more than the gothic-minimal aesthetic. Currently it is by design but barely visible."
+  ],
+  "critical_code_review_comments": [
+    "ArtistProgram.jsx submit handler always uses toast.error generic message on any backend failure — does not surface server-side 422 validation messages. Fine for now since frontend already validates email/why, but low-effort UX win.",
+    "ArtistProgram.jsx: success state (`done`) is not reset; user cannot submit a second time without page reload. Acceptable for an invitation-only program form.",
+    "ArtistProgram.jsx Formspree forwarder is non-blocking and silently console.warn on failure — confirmed correct behavior when REACT_APP_FORMSPREE_ENDPOINT env var is unset (skipped entirely). Backend POST is the source of truth — verified persists with id.",
+    "server.py still uses deprecated FastAPI on_event('shutdown'); duplicate ISO conversion in list_inquiries / list_artist_applications could be DRY'd. Non-blocking carry-over from iter 4.",
+    "Hero.jsx uses scrollY parallax tied to window listener — fine, cleanup correct."
+  ],
+  "updated_files": [
+    "/app/backend/tests/backend_test.py (added test_create_iteration5_full_payload)"
+  ],
+  "success_rate": {"backend": "100% (12/12)", "frontend": "100% on iteration-5 contracts (12/12 critical assertions)"},
+  "test_credentials": "N/A — no auth in this app",
+  "seed_data_creation": "Test data created via TEST_-prefixed inquiries and artist-applications during pytest + UI run; persisted to MongoDB (no cleanup endpoint — accumulates across iterations).",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iteration 5 verified. Removed/absent test IDs (do NOT test): hero-cta-shop, salvix-faq-trigger-*, principle-*, tab-*, inquire-form, philosophy-section, philosophy-headline, product-01, product-02, field-artist, field-location, field-message, nav-about, marquee, footer sitemap. Active iter-5 test IDs: brand-logo, hero-section, hero-headline (.wordmark class, deep dark green #23463F = rgb(35,70,63)), salvix-section, salvix-headline (contains 'Balm'), program-section, program-form, field-name, field-studio, field-city, field-instagram, field-email, field-years, field-style, field-why, field-honest-feedback (a SELECT with Yes/No), field-shipping, submit-program-btn, inquiry-success, contact-section, contact-email-link (mailto:inquerituals@gmail.com), contact-instagram (https://instagram.com/inque.rituals, label @inque.rituals), nav-salvix, nav-program, nav-contact, mobile-menu-toggle, mobile-menu, mobile-nav-{salvix,program,contact}, site-navbar. Backend payload contract: ArtistProgram.jsx posts {full_name, email, location, instagram, years_experience, statement} where statement is composed from studio/city/years/style/why/honest_feedback/shipping_address client-side. Backend validates statement min_length=20. Frontend validates form.why >= 20 chars BEFORE backend call. REACT_APP_FORMSPREE_ENDPOINT is unset — Formspree forwarder silently skipped, backend POST is sole source of truth.",
+  "rca_of_the_issue": "N/A — no bugs found. All iteration-5 contract requirements verified end-to-end."
+}

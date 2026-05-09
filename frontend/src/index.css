@@ -147,7 +147,15 @@ textarea.line-input { min-height: 110px; resize: vertical; line-height: 1.6; }
     cursor: pointer;
     transition: background 0.5s ease, color 0.5s ease, border-color 0.5s ease;
 }
-.btn-sharp:hover { background: var(--text-primary); color: var(--bg-primary); }
+.btn-sharp:hover {
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    box-shadow: 0 0 18px rgba(127, 175, 154, 0.35);
+    border-color: #7FAF9A;
+}
+.btn-sharp:active {
+    box-shadow: 0 0 28px rgba(127, 175, 154, 0.55);
+}
 
 .btn-sharp.green {
     border-color: var(--inque-green-light);
@@ -156,7 +164,11 @@ textarea.line-input { min-height: 110px; resize: vertical; line-height: 1.6; }
 .btn-sharp.green:hover {
     background: var(--inque-green-deep);
     color: var(--text-primary);
-    border-color: var(--inque-green-deep);
+    border-color: #7FAF9A;
+    box-shadow: 0 0 18px rgba(127, 175, 154, 0.35);
+}
+.btn-sharp.green:active {
+    box-shadow: 0 0 28px rgba(127, 175, 154, 0.55);
 }
 
 .btn-sharp.filled-green {
@@ -166,7 +178,11 @@ textarea.line-input { min-height: 110px; resize: vertical; line-height: 1.6; }
 }
 .btn-sharp.filled-green:hover {
     background: var(--inque-green-mid);
-    border-color: var(--inque-green-mid);
+    border-color: #7FAF9A;
+    box-shadow: 0 0 18px rgba(127, 175, 154, 0.35);
+}
+.btn-sharp.filled-green:active {
+    box-shadow: 0 0 28px rgba(127, 175, 154, 0.55);
 }
 .btn-sharp:disabled { opacity: 0.4; cursor: not-allowed; }
 
@@ -221,17 +237,18 @@ textarea.line-input { min-height: 110px; resize: vertical; line-height: 1.6; }
 .wordmark {
     font-family: var(--font-display);
     font-weight: 300;
-    color: var(--text-primary);
+    color: var(--inque-green);
     letter-spacing: -0.04em;
     line-height: 0.82;
     font-size: clamp(5.5rem, 22vw, 22rem);
     text-shadow:
-      0 0 40px rgba(94, 139, 126, 0.05),
-      0 0 120px rgba(43, 79, 71, 0.08);
+      0 0 30px rgba(43, 79, 71, 0.35),
+      0 0 90px rgba(35, 70, 63, 0.22),
+      0 0 180px rgba(94, 139, 126, 0.10);
 }
 
 .wordmark-outline {
-    -webkit-text-stroke: 1px rgba(94, 139, 126, 0.32);
+    -webkit-text-stroke: 1px rgba(94, 139, 126, 0.45);
     color: transparent;
 }
 

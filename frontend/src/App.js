@@ -4,7 +4,6 @@ import { Toaster } from "sonner";
 
 import Navbar from "./components/site/Navbar";
 import Hero from "./components/site/Hero";
-import Manifesto from "./components/site/BrandPhilosophy";
 import Salvix from "./components/site/Salvix";
 import ArtistProgram from "./components/site/ArtistProgram";
 import Contact from "./components/site/Contact";
@@ -15,7 +14,6 @@ function Home() {
     <main className="bg-[#0B0B0D] text-[#ECEAE4] min-h-screen">
       <Navbar />
       <Hero />
-      <Manifesto />
       <Salvix />
       <ArtistProgram />
       <Contact />

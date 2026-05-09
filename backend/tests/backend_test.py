@@ -149,6 +149,35 @@ class TestArtistApplications:
         ids = [it["id"] for it in r2.json()]
         assert data["id"] in ids
 
+    def test_create_iteration5_full_payload(self, session):
+        """Iteration 5 frontend ArtistProgram.jsx posts: full_name, email, location, instagram,
+        years_experience, statement (statement is composed from studio/city/years/style/why/honest/shipping)."""
+        statement = (
+            "Studio / shop: Black Iron Tattoo\nCity: Lisbon\nYears tattooing: 7\n"
+            "Style / specialty: Fine line gothic\n\nWhy test SALVIX?\n"
+            "I want to provide honest aftercare feedback for marked skin over a 6-week trial.\n\n"
+            "Open to honest feedback: Yes\nShipping address: 123 Rua, Lisbon"
+        )
+        payload = {
+            "full_name": "TEST_Iter5 Artist",
+            "email": "test_iter5@example.com",
+            "location": "Lisbon",
+            "instagram": "@iter5_artist",
+            "years_experience": "7",
+            "statement": statement,
+        }
+        r = session.post(f"{API}/artist-applications", json=payload)
+        assert r.status_code == 201, r.text
+        data = r.json()
+        assert data["full_name"] == payload["full_name"]
+        assert data["years_experience"] == "7"
+        assert "Why test SALVIX?" in data["statement"]
+        assert "Shipping address" in data["statement"]
+        # Persistence
+        r2 = session.get(f"{API}/artist-applications")
+        assert r2.status_code == 200
+        assert data["id"] in [it["id"] for it in r2.json()]
+
     def test_short_statement_422(self, session):
         r = session.post(f"{API}/artist-applications", json={
             "full_name": "TEST_Short",

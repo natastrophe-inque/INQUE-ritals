@@ -26,31 +26,28 @@ export default function Hero() {
       data-testid="hero-section"
       className="relative h-[100svh] overflow-hidden bg-[#0B0B0D]"
     >
-      {/* Single soft metallic green glow — top right */}
-      <div
-        aria-hidden
-        className="metal-glow parallax-layer"
-        style={{
-          width: "55vw",
-          height: "55vw",
-          right: "-15vw",
-          top: "-10vw",
-          transform: py(-0.06),
-          opacity: 0.5,
-        }}
-      />
-
-      {/* Subtle drifting spiral */}
+      {/* Faint background spiral motif — entire visual atmosphere */}
       <div
         aria-hidden
         className="absolute parallax-layer pointer-events-none"
         style={{
-          right: "-6vw",
-          top: "12vh",
+          right: "-12vw",
+          top: "10vh",
           transform: py(-0.18),
         }}
       >
-        <Spiral size={520} stroke="#5E8B7E" strokeWidth={0.4} opacity={0.14} rotate />
+        <Spiral size={620} stroke="#5E8B7E" strokeWidth={0.4} opacity={0.10} rotate />
+      </div>
+      <div
+        aria-hidden
+        className="absolute parallax-layer pointer-events-none"
+        style={{
+          left: "-10vw",
+          bottom: "-10vh",
+          transform: py(0.05),
+        }}
+      >
+        <Spiral size={460} stroke="#23463F" strokeWidth={0.5} opacity={0.08} />
       </div>
 
       {/* Centered wordmark + tagline */}
@@ -69,11 +66,15 @@ export default function Hero() {
         <p className="font-display italic text-xl md:text-2xl font-light text-[#9E9E98] mt-12 md:mt-16 tracking-tight">
           For the marked.
         </p>
+
+        <p className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.4em] text-[#6A6A65] mt-8">
+          Biotech tattoo aftercare. Ritualized.
+        </p>
       </div>
 
-      {/* Quiet scroll indicator */}
+      {/* Quiet scroll line */}
       <div className="absolute bottom-10 left-0 right-0 z-20 flex justify-center">
-        <span className="block w-px h-12 bg-gradient-to-b from-transparent via-[#5E8B7E]/60 to-transparent" />
+        <span className="block w-px h-12 bg-gradient-to-b from-transparent via-[#5E8B7E]/50 to-transparent" />
       </div>
     </section>
   );

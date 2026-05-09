@@ -2,40 +2,80 @@ import { useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
 import { useReveal } from "../../hooks/useReveal";
+import Spiral from "./Spiral";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+const FORMSPREE = process.env.REACT_APP_FORMSPREE_ENDPOINT; // optional, e.g. https://formspree.io/f/xxx
+
+const INITIAL = {
+  name: "",
+  studio: "",
+  city: "",
+  instagram: "",
+  email: "",
+  years: "",
+  style: "",
+  why: "",
+  honest_feedback: "",
+  shipping_address: "",
+};
 
 export default function ArtistProgram() {
   const ref = useReveal();
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
-  const [form, setForm] = useState({
-    artist: "",
-    email: "",
-    instagram: "",
-    location: "",
-    message: "",
-  });
+  const [form, setForm] = useState(INITIAL);
 
   const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const submit = async (e) => {
     e.preventDefault();
-    if (form.message.trim().length < 20) {
-      toast.error("Please share a few sentences — 20 characters minimum.");
+    if (form.why.trim().length < 20) {
+      toast.error("Please share a few sentences on why you want to test SALVIX (20 chars min).");
       return;
     }
     setSubmitting(true);
+
+    // Build a structured statement combining all program-specific answers
+    // so they're searchable in the database AND mailable via Formspree.
+    const statement = [
+      `Studio / shop: ${form.studio || "—"}`,
+      `City: ${form.city || "—"}`,
+      `Years tattooing: ${form.years || "—"}`,
+      `Style / specialty: ${form.style || "—"}`,
+      ``,
+      `Why test SALVIX?`,
+      form.why,
+      ``,
+      `Open to honest feedback: ${form.honest_feedback || "—"}`,
+      `Shipping address: ${form.shipping_address || "—"}`,
+    ].join("\n");
+
     try {
+      // 1) Always persist to backend
       await axios.post(`${API}/artist-applications`, {
-        full_name: form.artist,
+        full_name: form.name,
         email: form.email,
-        location: form.location || null,
+        location: form.city || null,
         instagram: form.instagram || null,
-        statement: form.message,
+        years_experience: form.years || null,
+        statement,
       });
+
+      // 2) If a Formspree endpoint is configured, also email it to inquerituals@gmail.com
+      if (FORMSPREE) {
+        try {
+          await axios.post(FORMSPREE, {
+            _subject: "INQUE — Artist Program application",
+            ...form,
+          });
+        } catch (mailErr) {
+          // non-fatal; backend already has it
+          console.warn("Formspree forward failed:", mailErr);
+        }
+      }
+
       setDone(true);
-      toast.success("Application received.");
     } catch (err) {
       toast.error("Something went wrong. Please try again.");
     } finally {
@@ -47,9 +87,14 @@ export default function ArtistProgram() {
     <section
       id="program"
       data-testid="program-section"
-      className="relative bg-[#0B0B0D] border-t border-[rgba(236,234,228,0.06)]"
+      className="relative bg-[#0B0B0D] border-t border-[rgba(236,234,228,0.06)] overflow-hidden"
     >
-      <div className="px-6 md:px-12 py-32 md:py-40">
+      {/* Faint spiral motif */}
+      <div className="absolute -left-32 bottom-10 pointer-events-none">
+        <Spiral size={420} stroke="#23463F" strokeWidth={0.5} opacity={0.08} rotate />
+      </div>
+
+      <div className="relative px-6 md:px-12 py-32 md:py-44">
         <div ref={ref} className="reveal max-w-3xl mx-auto">
           <div className="text-center">
             <p className="font-mono text-[10px] uppercase tracking-[0.4em]" style={{ color: "#5E8B7E" }}>
@@ -59,17 +104,19 @@ export default function ArtistProgram() {
               Artist Program.
             </h2>
             <p className="font-body text-[14px] md:text-[15px] text-[#9E9E98] mt-8 max-w-md mx-auto leading-relaxed">
-              A closed network for tattoo artists and studios. Wholesale Salvix, co-branded kits, editorial support.
+              A closed network for tattoo artists and studios.
+              <br />
+              Test SALVIX. Share honest feedback.
             </p>
           </div>
 
           {done ? (
             <div data-testid="inquiry-success" className="mt-20 text-center">
               <h3 className="font-display italic text-3xl md:text-4xl font-light text-[#5E8B7E] tracking-tight">
-                Application received.
+                Your application has been received.
               </h3>
-              <p className="font-body text-[14px] text-[#6A6A65] mt-4">
-                We respond personally within five working days.
+              <p className="font-body text-[14px] text-[#6A6A65] mt-6">
+                We&rsquo;ll be in touch if selected.
               </p>
             </div>
           ) : (
@@ -78,20 +125,34 @@ export default function ArtistProgram() {
               onSubmit={submit}
               className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-2"
             >
-              <Field label="Artist or studio" name="artist" value={form.artist} onChange={onChange} required testId="field-artist" />
+              <Field label="Name" name="name" value={form.name} onChange={onChange} required testId="field-name" />
+              <Field label="Studio / shop" name="studio" value={form.studio} onChange={onChange} testId="field-studio" />
+              <Field label="City" name="city" value={form.city} onChange={onChange} testId="field-city" />
+              <Field label="Instagram handle" name="instagram" value={form.instagram} onChange={onChange} testId="field-instagram" />
               <Field label="Email" name="email" type="email" value={form.email} onChange={onChange} required testId="field-email" />
-              <Field label="Instagram" name="instagram" value={form.instagram} onChange={onChange} testId="field-instagram" />
-              <Field label="Location" name="location" value={form.location} onChange={onChange} testId="field-location" />
-              <Field
-                full
-                label="Message"
-                name="message"
-                value={form.message}
-                onChange={onChange}
-                required
-                textarea
-                testId="field-message"
-              />
+              <Field label="Years tattooing" name="years" value={form.years} onChange={onChange} testId="field-years" />
+              <Field full label="Style / specialty" name="style" value={form.style} onChange={onChange} testId="field-style" />
+              <Field full label="Why do you want to test SALVIX?" name="why" value={form.why} onChange={onChange} required textarea testId="field-why" />
+
+              <label className="block py-4 md:col-span-2">
+                <span className="font-mono text-[10px] uppercase tracking-[0.32em] text-[#6A6A65]">
+                  Are you open to giving honest feedback?
+                </span>
+                <select
+                  name="honest_feedback"
+                  value={form.honest_feedback}
+                  onChange={onChange}
+                  required
+                  data-testid="field-honest-feedback"
+                  className="line-input bg-[#0B0B0D]"
+                >
+                  <option value="">— Select —</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </label>
+
+              <Field full label="Shipping address" name="shipping_address" value={form.shipping_address} onChange={onChange} textarea testId="field-shipping" />
 
               <div className="md:col-span-2 mt-12 flex justify-center">
                 <button
@@ -100,7 +161,7 @@ export default function ArtistProgram() {
                   disabled={submitting}
                   className="btn-sharp green"
                 >
-                  {submitting ? "Sending —" : "Apply"}
+                  {submitting ? "Sending —" : "Apply to Artist Program"}
                 </button>
               </div>
             </form>
