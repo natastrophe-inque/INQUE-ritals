@@ -5,8 +5,8 @@ import { Toaster } from "sonner";
 import Navbar from "./components/site/Navbar";
 import Hero from "./components/site/Hero";
 import Salvix from "./components/site/Salvix";
+import WhySalvix from "./components/site/WhySalvix";
 import ArtistProgram from "./components/site/ArtistProgram";
-import Contact from "./components/site/Contact";
 import Footer from "./components/site/Footer";
 
 function Home() {
@@ -15,8 +15,8 @@ function Home() {
       <Navbar />
       <Hero />
       <Salvix />
+      <WhySalvix />
       <ArtistProgram />
-      <Contact />
       <Footer />
     </main>
   );

@@ -1,0 +1,75 @@
+{
+  "summary": "Iteration 6 frontend refinement verified end-to-end. All 50+ assertions passed including new ingredient blocks, WhySalvix pillars, footer-as-contact migration, Navbar 'Why' link, and updated Artist Program copy. Backend smoke (POST /api/artist-applications) returns 201.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "verified_checks": {
+    "hero": {
+      "hero-section": true,
+      "hero-headline_text": "INQUE",
+      "tagline_'For the marked.'_present": true
+    },
+    "salvix": {
+      "salvix-section": true,
+      "salvix-headline": "Recovery Balm.",
+      "new_copy_'Advanced biotech recovery for tattooed skin.'_present": true,
+      "ingredient-snail-mucin": true,
+      "ingredient-ectoin": true,
+      "ingredient-panthenol": true,
+      "ingredient-peptides": true
+    },
+    "why_salvix": {
+      "why-section (#why)": true,
+      "pillar-0_Barrier Repair": true,
+      "pillar-1_Biotech Actives": true,
+      "pillar-2_Recovery Focused": true,
+      "pillar-3_Tattoo Specific": true
+    },
+    "contact_migration": {
+      "old_[data-testid=contact-section]_removed": true,
+      "site-footer_present": true,
+      "footer_id_equals_'contact'": true,
+      "contact-email-link_inside_footer": true,
+      "contact-email_href": "mailto:inquerituals@gmail.com",
+      "contact-instagram_inside_footer": true,
+      "contact-instagram_href": "https://instagram.com/inque.rituals"
+    },
+    "navbar": {
+      "nav-salvix": true,
+      "nav-why": true,
+      "nav-program": true,
+      "nav-contact": true,
+      "nav-contact_scrolls_to_footer": true
+    },
+    "artist_program": {
+      "overline_'Studio partnership'": true,
+      "old_'By invitation'_removed": true,
+      "new_copy_curated_partnership_recovery-focused": true,
+      "10_form_fields_all_present": true,
+      "submit-program-btn": true
+    },
+    "backend_smoke": {
+      "POST /api/artist-applications": "201 Created, response includes id + persisted fields"
+    }
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Salvix.jsx: ingredient-* test IDs are derived via `ing.name.toLowerCase().replace(/\\s/g, '-')` — works for current 4 names. If a future ingredient contains punctuation/diacritics, IDs may break; consider an explicit `testId` field on each ingredient like ArtistProgram fields use.",
+    "Footer.jsx wraps id='contact' on the <footer> element; smooth-scroll from Navbar works correctly. No issues."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100% (smoke)", "frontend": "100%"},
+  "test_credentials": "n/a",
+  "seed_data_creation": "Created 1 TEST_iter6 artist application via backend smoke (id=d8565f6f-3477-481f-9470-298df5050f13). Safe to leave or main agent can purge TEST_ prefix.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iteration 6 fully passing. Contact role now lives in the footer (data-testid=site-footer, id=contact). The deleted Contact.jsx is no longer rendered. Mocked: REACT_APP_FORMSPREE_ENDPOINT remains unset — form submissions only persist to backend (intentional). New IDs added/verified: ingredient-snail-mucin, ingredient-ectoin, ingredient-panthenol, ingredient-peptides, why-section, pillar-0..3, nav-why.",
+  "rca of the issue": "n/a — no defects found"
+}

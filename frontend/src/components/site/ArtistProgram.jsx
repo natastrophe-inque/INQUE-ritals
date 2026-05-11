@@ -98,15 +98,15 @@ export default function ArtistProgram() {
         <div ref={ref} className="reveal max-w-3xl mx-auto">
           <div className="text-center">
             <p className="font-mono text-[10px] uppercase tracking-[0.4em]" style={{ color: "#5E8B7E" }}>
-              By invitation
+              Studio partnership
             </p>
             <h2 className="font-display font-light text-[clamp(2.25rem,5vw,4.5rem)] text-[#ECEAE4] tracking-[-0.02em] leading-[1.05] mt-8">
               Artist Program.
             </h2>
             <p className="font-body text-[14px] md:text-[15px] text-[#9E9E98] mt-8 max-w-md mx-auto leading-relaxed">
-              A closed network for tattoo artists and studios.
-              <br />
-              Test SALVIX. Share honest feedback.
+              A curated partnership for tattoo studios and recovery-focused
+              artists. Trial SALVIX in your room. Share honest, professional
+              feedback. Help us elevate the standard of tattoo recovery.
             </p>
           </div>
 

@@ -3,6 +3,7 @@ import { SpiralMark } from "./Spiral";
 
 const NAV_ITEMS = [
   { id: "salvix", label: "Salvix" },
+  { id: "why", label: "Why" },
   { id: "program", label: "Artist Program" },
   { id: "contact", label: "Contact" },
 ];
