@@ -52,7 +52,7 @@ export default function Navbar() {
                 key={item.id}
                 data-testid={`nav-${item.id}`}
                 onClick={() => handleClick(item.id)}
-                className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#9E9E98] hover:text-[#6F8077] transition-colors duration-500"
+                className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#9E9E98] hover:text-[#4B5F4F] transition-colors duration-500"
               >
                 {item.label}
               </button>
@@ -76,7 +76,7 @@ export default function Navbar() {
                   key={item.id}
                   data-testid={`mobile-nav-${item.id}`}
                   onClick={() => handleClick(item.id)}
-                  className="text-left font-mono text-[12px] uppercase tracking-[0.3em] text-[#9E9E98] hover:text-[#6F8077]"
+                  className="text-left font-mono text-[12px] uppercase tracking-[0.3em] text-[#9E9E98] hover:text-[#4B5F4F]"
                 >
                   — {item.label}
                 </button>

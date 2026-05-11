@@ -22,7 +22,7 @@ export default function Positioning() {
         <div ref={ref} className="reveal max-w-4xl mx-auto text-center">
           <p
             data-testid="positioning-overline"
-            className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.46em] text-[#6F8077]"
+            className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.46em] text-[#4B5F4F]"
           >
             Aftercare is outdated.
           </p>
@@ -33,7 +33,7 @@ export default function Positioning() {
           >
             Recovery is the
             <br />
-            <em className="italic font-light text-[#6F8077]">new standard.</em>
+            <em className="italic font-light text-[#4B5F4F]">new standard.</em>
           </h2>
 
           <p className="font-body text-[15px] md:text-[16px] leading-[1.95] text-[#9E9E98] mt-16 max-w-xl mx-auto">

@@ -43,7 +43,7 @@ export default function WhySalvix() {
       <div className="relative px-6 md:px-12 py-32 md:py-44">
         <div ref={ref} className="reveal max-w-5xl mx-auto">
           <div className="text-center">
-            <p className="font-mono text-[10px] uppercase tracking-[0.46em] text-[#6F8077]">
+            <p className="font-mono text-[10px] uppercase tracking-[0.46em] text-[#4B5F4F]">
               Why Salvix
             </p>
             <h2 className="font-display font-light text-[clamp(2.25rem,5vw,4.5rem)] tracking-[-0.02em] leading-[1.05] text-[#ECEAE4] mt-8">

@@ -22,50 +22,47 @@ export default function Hero() {
   return (
     <section
       data-testid="hero-section"
-      className="relative h-[100svh] overflow-hidden bg-[#0B0B0D]"
+      className="relative min-h-[100svh] overflow-hidden bg-[#0B0B0D] flex items-center justify-center"
     >
-      {/* Ghosted snail-shell spiral — sits quietly behind, no glow */}
+      {/* Single centered snail-shell spiral — behind the wordmark */}
       <div
         aria-hidden
         className="absolute inset-0 flex items-center justify-center pointer-events-none"
-        style={{ transform: `translate3d(0, ${-scrollY * 0.06}px, 0)` }}
+        style={{ transform: `translate3d(0, ${-scrollY * 0.05}px, 0)` }}
       >
-        <div className="spiral-breath">
-          <Spiral
-            size={620}
-            stroke="#2A3D36"
-            strokeWidth={0.6}
-            opacity={0.16}
-            rotate
-          />
-        </div>
+        <Spiral
+          size={580}
+          stroke="#2E3F34"
+          strokeWidth={1.2}
+          opacity={0.45}
+        />
       </div>
 
-      {/* Centered wordmark + tagline */}
+      {/* Center stack */}
       <div
         ref={ref}
-        className="reveal-stagger absolute inset-0 z-10 flex flex-col items-center justify-center px-6"
+        className="reveal-stagger relative z-10 flex flex-col items-center justify-center px-6 text-center"
       >
         <h1
           data-testid="hero-headline"
-          className="wordmark-metal text-center"
-          style={{ transform: `translate3d(0, ${-scrollY * 0.10}px, 0)` }}
+          className="wordmark-metal"
+          style={{ transform: `translate3d(0, ${-scrollY * 0.08}px, 0)` }}
         >
           INQUE
         </h1>
 
-        <p className="font-display italic text-xl md:text-2xl font-light text-[#9E9E98] mt-12 md:mt-16 tracking-tight">
-          For the marked.
+        <p className="font-display text-xl md:text-2xl font-light text-[#9E9E98] mt-14 md:mt-16 tracking-tight">
+          SALVIX Recovery Balm
         </p>
 
-        <p className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.42em] text-[#6A6A65] mt-8">
-          Biotech recovery skincare
+        <p className="font-body text-[14px] md:text-[15px] text-[#6A6A65] mt-6 max-w-md leading-relaxed">
+          Advanced biotech recovery for tattooed skin.
         </p>
       </div>
 
       {/* Quiet scroll line */}
       <div className="absolute bottom-10 left-0 right-0 z-20 flex justify-center">
-        <span className="block w-px h-12 bg-gradient-to-b from-transparent via-[#3A4A3E] to-transparent" />
+        <span className="block w-px h-12 bg-gradient-to-b from-transparent via-[#2E3F34] to-transparent" />
       </div>
     </section>
   );

@@ -85,7 +85,7 @@ export default function ArtistProgram() {
       <div className="relative px-6 md:px-12 py-32 md:py-44">
         <div ref={ref} className="reveal max-w-3xl mx-auto">
           <div className="text-center">
-            <p className="font-mono text-[10px] uppercase tracking-[0.46em] text-[#6F8077]">
+            <p className="font-mono text-[10px] uppercase tracking-[0.46em] text-[#4B5F4F]">
               Artist Partnership
             </p>
             <h2 className="font-display font-light text-[clamp(2.25rem,5vw,4.5rem)] text-[#ECEAE4] tracking-[-0.02em] leading-[1.05] mt-10 max-w-2xl mx-auto">
@@ -104,7 +104,7 @@ export default function ArtistProgram() {
 
           {done ? (
             <div data-testid="inquiry-success" className="mt-20 text-center">
-              <h3 className="font-display italic text-3xl md:text-4xl font-light text-[#6F8077] tracking-tight">
+              <h3 className="font-display italic text-3xl md:text-4xl font-light text-[#4B5F4F] tracking-tight">
                 Your application has been received.
               </h3>
               <p className="font-body text-[14px] text-[#6A6A65] mt-6">

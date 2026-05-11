@@ -1,0 +1,28 @@
+{
+  "summary": "Iteration 8 visual/copy refinement verified via Playwright on public URL. Hero now leads with INQUE -> 'SALVIX Recovery Balm' -> 'Advanced biotech recovery for tattooed skin.'. 'For the marked.' appears EXACTLY ONCE on the page and only within the footer (case-insensitive regex over body innerText). Salvix section no longer renders the trailing 'For the marked.' line. Positioning, Why pillars (01-04), Footer contact links, and Artist Partnership form (7 fields + success state) all working. Backend smoke POST /api/artist-applications returned 201.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Footer bottom-right", "issues": ["'BIOTECH RECOVERY SKINCARE' still rendered as bottom-right meta tag in footer. Spec only forbade it inside the hero, so this is informational, not a bug. Confirm intent with main agent."]}
+    ]
+  },
+  "test_report_links": ["/app/test_reports/iteration_8.json"],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Footer.jsx still renders 'Biotech Recovery Skincare' as a meta tag at bottom-right. Iteration 8 spec required removing only the hero subline, but flag to E1 if the brand wants this phrase fully removed.",
+    "ArtistProgram.jsx maps frontend fields to backend schema in component; consider centralising the mapping for maintainability."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "test_credentials": "None required",
+  "seed_data_creation": "Created 1 backend record via curl (TEST Curl Iter8) and 1 via UI submission (TEST Artist) in artist_applications collection.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Hero copy: 'INQUE' headline + 'SALVIX Recovery Balm' + 'Advanced biotech recovery for tattooed skin.'. 'For the marked.' tagline appears uppercased in DOM due to CSS class 'uppercase' on footer p element; when asserting, use case-insensitive regex over body.innerText. Form selectors are data-testid='field-name|studio|city|instagram|email|website|notes' and submit btn = data-testid='submit-program-btn', success = data-testid='inquiry-success'. Backend schema requires {full_name, email, statement (min 20 chars), optional location/instagram/portfolio_url/years_experience}.",
+  "rca of the issue": "No defects; all iteration 8 contract changes verified live."
+}

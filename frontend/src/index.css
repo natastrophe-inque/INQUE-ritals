@@ -13,16 +13,16 @@
     --text-secondary: #9E9E98;
     --text-muted: #6A6A65;
 
-    --inque-green-deep: #142621;
-    --inque-green: #1F3A33;
-    --inque-green-mid: #2A3D36;
-    --inque-green-light: #6F8077;
+    --inque-green-deep: #1A2A22;
+    --inque-green: #22352B;
+    --inque-green-mid: #2E3F34;
+    --inque-green-light: #4B5F4F;
     --inque-bronze: #3A4A3E;
     --inque-steel: #6F756F;
 
-    --border-default: rgba(236, 234, 228, 0.07);
-    --border-hover: rgba(236, 234, 228, 0.18);
-    --border-green: rgba(111, 128, 119, 0.20);
+    --border-default: rgba(236, 234, 228, 0.06);
+    --border-hover: rgba(236, 234, 228, 0.16);
+    --border-green: rgba(75, 95, 79, 0.18);
 
     --font-display: 'Cormorant Garamond', serif;
     --font-body: 'Outfit', sans-serif;
@@ -255,20 +255,20 @@ textarea.line-input { min-height: 110px; resize: vertical; line-height: 1.6; }
     font-weight: 300;
     letter-spacing: -0.04em;
     line-height: 0.82;
-    font-size: clamp(5rem, 16vw, 16rem);
+    font-size: clamp(4.5rem, 14vw, 14rem);
     background: linear-gradient(
         180deg,
-        #B8C2BB 0%,
-        #8A9991 32%,
-        #5A6E63 62%,
-        #2E3F38 92%
+        #C4CFC6 0%,
+        #8E9C92 35%,
+        #5A6C5F 70%,
+        #2E3F34 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
-    filter: drop-shadow(0 0 16px rgba(58, 74, 62, 0.40))
-            drop-shadow(0 0 44px rgba(31, 58, 51, 0.35));
+    filter: drop-shadow(0 0 10px rgba(46, 63, 52, 0.40))
+            drop-shadow(0 0 30px rgba(26, 42, 34, 0.30));
 }
 
 .wordmark-outline {
@@ -353,20 +353,20 @@ textarea.line-input { min-height: 110px; resize: vertical; line-height: 1.6; }
 
 /* ---- Floating atmospheric brand mark ---- */
 .brand-floating {
-    color: rgba(111, 128, 119, 0.55);
+    color: rgba(75, 95, 79, 0.55);
     font-family: var(--font-display);
     letter-spacing: 0.36em;
     font-weight: 300;
     text-shadow:
-        0 0 10px rgba(31, 58, 51, 0.30),
-        0 0 24px rgba(20, 38, 33, 0.20);
+        0 0 8px rgba(34, 53, 43, 0.28),
+        0 0 20px rgba(26, 42, 34, 0.18);
     transition: color 0.6s ease, text-shadow 0.6s ease, opacity 0.6s ease;
 }
 .brand-floating:hover {
-    color: rgba(111, 128, 119, 0.85);
+    color: rgba(75, 95, 79, 0.85);
     text-shadow:
-        0 0 12px rgba(111, 128, 119, 0.45),
-        0 0 32px rgba(31, 58, 51, 0.30);
+        0 0 12px rgba(75, 95, 79, 0.40),
+        0 0 28px rgba(34, 53, 43, 0.25);
 }
 @keyframes brand-breath {
     0%, 100% { opacity: 0.85; }

@@ -1,5 +1,5 @@
 import { useReveal } from "../../hooks/useReveal";
-import Spiral, { SpiralMark } from "./Spiral";
+import Spiral from "./Spiral";
 
 const INGREDIENTS = [
   { name: "Snail Mucin", note: "Mucopolysaccharide regeneration" },
@@ -47,7 +47,7 @@ function MatteTube() {
         </div>
         {/* Brand mark */}
         <div className="absolute top-[62%] left-1/2 -translate-x-1/2 text-center">
-          <p className="font-display text-[15px] tracking-[0.18em] text-[#6F8077]">SALVIX</p>
+          <p className="font-display text-[15px] tracking-[0.18em] text-[#4B5F4F]">SALVIX</p>
           <p className="font-mono text-[8px] uppercase tracking-[0.32em] text-[#6A6A65] mt-2">
             Recovery Balm
           </p>
@@ -104,7 +104,7 @@ export default function Salvix() {
 
             {/* Copy */}
             <div className="md:col-span-7">
-              <p className="font-mono text-[10px] uppercase tracking-[0.4em]" style={{ color: "#6F8077" }}>
+              <p className="font-mono text-[10px] uppercase tracking-[0.4em]" style={{ color: "#4B5F4F" }}>
                 Salvix
               </p>
 
@@ -142,13 +142,6 @@ export default function Salvix() {
                   </li>
                 ))}
               </ul>
-
-              <div className="mt-12 flex items-center gap-4">
-                <SpiralMark size={14} />
-                <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#6F8077]">
-                  For the marked.
-                </span>
-              </div>
             </div>
           </div>
         </div>

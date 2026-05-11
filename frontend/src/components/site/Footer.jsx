@@ -23,7 +23,7 @@ export default function Footer() {
             <a
               href="mailto:inquerituals@gmail.com"
               data-testid="contact-email-link"
-              className="font-mono text-[11px] uppercase tracking-[0.34em] text-[#9E9E98] hover:text-[#6F8077] transition-colors duration-500"
+              className="font-mono text-[11px] uppercase tracking-[0.34em] text-[#9E9E98] hover:text-[#4B5F4F] transition-colors duration-500"
             >
               inquerituals@gmail.com
             </a>
@@ -32,7 +32,7 @@ export default function Footer() {
               target="_blank"
               rel="noreferrer"
               data-testid="contact-instagram"
-              className="inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.34em] text-[#9E9E98] hover:text-[#6F8077] transition-colors duration-500"
+              className="inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.34em] text-[#9E9E98] hover:text-[#4B5F4F] transition-colors duration-500"
             >
               <Instagram size={12} strokeWidth={1.2} />
               <span>@inque.rituals</span>
