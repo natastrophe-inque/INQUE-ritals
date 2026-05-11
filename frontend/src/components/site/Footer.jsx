@@ -45,12 +45,9 @@ export default function Footer() {
           </p>
 
           {/* Bottom line */}
-          <div className="w-full pt-8 mt-4 border-t border-[rgba(236,234,228,0.06)] flex flex-col md:flex-row items-center justify-between gap-3">
+          <div className="w-full pt-8 mt-4 border-t border-[rgba(236,234,228,0.05)] flex justify-center">
             <span className="font-mono text-[9px] uppercase tracking-[0.34em] text-[#6A6A65]">
               © MMXXV INQUE · Toronto
-            </span>
-            <span className="font-mono text-[9px] uppercase tracking-[0.34em] text-[#6A6A65]">
-              Biotech Recovery Skincare
             </span>
           </div>
         </div>
