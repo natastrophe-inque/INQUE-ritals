@@ -4,6 +4,7 @@ import { Toaster } from "sonner";
 
 import Navbar from "./components/site/Navbar";
 import Hero from "./components/site/Hero";
+import Positioning from "./components/site/Positioning";
 import Salvix from "./components/site/Salvix";
 import WhySalvix from "./components/site/WhySalvix";
 import ArtistProgram from "./components/site/ArtistProgram";
@@ -14,6 +15,7 @@ function Home() {
     <main className="bg-[#0B0B0D] text-[#ECEAE4] min-h-screen">
       <Navbar />
       <Hero />
+      <Positioning />
       <Salvix />
       <WhySalvix />
       <ArtistProgram />

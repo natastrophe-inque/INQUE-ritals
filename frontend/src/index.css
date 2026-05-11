@@ -13,15 +13,16 @@
     --text-secondary: #9E9E98;
     --text-muted: #6A6A65;
 
-    --inque-green-deep: #1A3A34;
-    --inque-green: #23463F;
-    --inque-green-mid: #2B4F47;
-    --inque-green-light: #5E8B7E;
-    --inque-steel: #8A9590;
+    --inque-green-deep: #142621;
+    --inque-green: #1F3A33;
+    --inque-green-mid: #2A3D36;
+    --inque-green-light: #6F8077;
+    --inque-bronze: #3A4A3E;
+    --inque-steel: #6F756F;
 
-    --border-default: rgba(236, 234, 228, 0.08);
-    --border-hover: rgba(236, 234, 228, 0.22);
-    --border-green: rgba(94, 139, 126, 0.28);
+    --border-default: rgba(236, 234, 228, 0.07);
+    --border-hover: rgba(236, 234, 228, 0.18);
+    --border-green: rgba(111, 128, 119, 0.20);
 
     --font-display: 'Cormorant Garamond', serif;
     --font-body: 'Outfit', sans-serif;
@@ -206,8 +207,8 @@ textarea.line-input { min-height: 110px; resize: vertical; line-height: 1.6; }
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(60% 45% at 78% 25%, rgba(43, 79, 71, 0.22), transparent 70%),
-      radial-gradient(45% 35% at 18% 80%, rgba(94, 139, 126, 0.05), transparent 70%);
+      radial-gradient(60% 45% at 78% 25%, rgba(31, 58, 51, 0.16), transparent 70%),
+      radial-gradient(45% 35% at 18% 80%, rgba(111, 128, 119, 0.04), transparent 70%);
     pointer-events: none;
 }
 
@@ -223,11 +224,11 @@ textarea.line-input { min-height: 110px; resize: vertical; line-height: 1.6; }
 .brushed-metal {
     background:
       linear-gradient(110deg,
-        rgba(94, 139, 126, 0.04) 0%,
-        rgba(43, 79, 71, 0.08) 30%,
+        rgba(111, 128, 119, 0.04) 0%,
+        rgba(31, 58, 51, 0.06) 30%,
         rgba(20, 22, 24, 0.0) 55%,
-        rgba(94, 139, 126, 0.05) 80%,
-        rgba(43, 79, 71, 0.04) 100%);
+        rgba(111, 128, 119, 0.05) 80%,
+        rgba(31, 58, 51, 0.04) 100%);
 }
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -257,17 +258,17 @@ textarea.line-input { min-height: 110px; resize: vertical; line-height: 1.6; }
     font-size: clamp(5rem, 16vw, 16rem);
     background: linear-gradient(
         180deg,
-        #C8D6CB 0%,
-        #95B1A2 28%,
-        #5E8B7E 55%,
-        #2B4F47 90%
+        #B8C2BB 0%,
+        #8A9991 32%,
+        #5A6E63 62%,
+        #2E3F38 92%
     );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
-    filter: drop-shadow(0 0 22px rgba(94, 139, 126, 0.22))
-            drop-shadow(0 0 60px rgba(43, 79, 71, 0.30));
+    filter: drop-shadow(0 0 16px rgba(58, 74, 62, 0.40))
+            drop-shadow(0 0 44px rgba(31, 58, 51, 0.35));
 }
 
 .wordmark-outline {
@@ -276,10 +277,10 @@ textarea.line-input { min-height: 110px; resize: vertical; line-height: 1.6; }
 }
 
 @keyframes spiral-breath {
-    0%, 100% { opacity: 0.62; transform: scale(1); }
-    50% { opacity: 0.80; transform: scale(1.015); }
+    0%, 100% { opacity: 0.32; transform: scale(1); }
+    50% { opacity: 0.42; transform: scale(1.012); }
 }
-.spiral-breath { animation: spiral-breath 8s ease-in-out infinite; }
+.spiral-breath { animation: spiral-breath 10s ease-in-out infinite; }
 
 /* ---- Parallax ---- */
 .parallax-layer { will-change: transform; transition: transform 0.05s linear; }
@@ -289,10 +290,10 @@ textarea.line-input { min-height: 110px; resize: vertical; line-height: 1.6; }
     position: absolute;
     pointer-events: none;
     background: radial-gradient(circle at center,
-        rgba(94, 139, 126, 0.18) 0%,
-        rgba(43, 79, 71, 0.10) 30%,
+        rgba(31, 58, 51, 0.14) 0%,
+        rgba(20, 38, 33, 0.08) 30%,
         transparent 65%);
-    filter: blur(40px);
+    filter: blur(50px);
 }
 
 /* ---- Black glass surface ---- */
@@ -352,21 +353,20 @@ textarea.line-input { min-height: 110px; resize: vertical; line-height: 1.6; }
 
 /* ---- Floating atmospheric brand mark ---- */
 .brand-floating {
-    color: rgba(94, 139, 126, 0.62);
+    color: rgba(111, 128, 119, 0.55);
     font-family: var(--font-display);
     letter-spacing: 0.36em;
     font-weight: 300;
     text-shadow:
-        0 0 12px rgba(94, 139, 126, 0.35),
-        0 0 28px rgba(43, 79, 71, 0.25),
-        0 0 48px rgba(43, 79, 71, 0.12);
+        0 0 10px rgba(31, 58, 51, 0.30),
+        0 0 24px rgba(20, 38, 33, 0.20);
     transition: color 0.6s ease, text-shadow 0.6s ease, opacity 0.6s ease;
 }
 .brand-floating:hover {
-    color: rgba(94, 139, 126, 0.95);
+    color: rgba(111, 128, 119, 0.85);
     text-shadow:
-        0 0 14px rgba(94, 139, 126, 0.55),
-        0 0 36px rgba(94, 139, 126, 0.32);
+        0 0 12px rgba(111, 128, 119, 0.45),
+        0 0 32px rgba(31, 58, 51, 0.30);
 }
 @keyframes brand-breath {
     0%, 100% { opacity: 0.85; }
