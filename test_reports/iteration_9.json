@@ -1,0 +1,29 @@
+{
+  "summary": "Iteration 9 ultra-minimal luxury refinement verified on public URL. All 35 frontend assertions PASS. Hero now renders 'INQUE' inside .wordmark-pewter (cream-pewter gradient #DDD5C5 -> #B5AFA1 -> #6E695F), wordmark-metal removed. Hero subline shows 'SALVIX Recovery Balm' + 'Advanced biotech recovery for tattooed skin.' and contains neither 'For the marked.' nor 'Biotech recovery skincare'. 'For the marked.' appears EXACTLY ONCE in the body, inside data-testid=site-footer. Salvix section now pure typography: headline 'Recovery Balm.', italic subtitle, paragraph, and centered wrap row of 4 ingredients (ingredient-snail-mucin, ingredient-ectoin, ingredient-panthenol, ingredient-peptides). DOM scan confirms ZERO elements under salvix-section carry class 'glass-vessel' or 'glass-cap', and no mockup-like packaging visual (>=200x200 with visual styling) is present. Positioning, Why pillars 01-04, Artist Partnership 7-field form + submit button, footer email & Instagram all intact. Backend smoke POST /api/artist-applications returned 201 with valid payload (full_name, email, statement).",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {"endpoint": "/api/artist-applications", "issue": "years_experience is typed as string in Pydantic schema; sending an integer returns 422. Frontend currently sends string so this is fine in production, but consider Union[int, str] or int coercion for API ergonomics."}
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": ["/app/test_reports/iteration_9.json"],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Spiral.jsx: buildSpiralPath useMemo dependency arrays are empty even though it accepts params - fine here since defaults are used, but if callers ever pass overrides the memo will be stale.",
+    "Hero.jsx: scroll listener uses requestAnimationFrame without cancelling pending frame on each scroll event; minor — no leak observed.",
+    "Backend artist-applications model: years_experience typed as Optional[str] feels off semantically; mismatch risk with future numeric clients (see backend minor)."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "test_credentials": "None required",
+  "seed_data_creation": "1 backend record created via curl smoke test (TEST Iter9 Smoke) in artist_applications collection.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Hero wordmark class is now .wordmark-pewter (NOT .wordmark-metal). Cream gradient #DDD5C5 -> #B5AFA1 -> #6E695F; font-size clamp(2.2rem, 4.6vw, 4.5rem) — at 1920px viewport wordmark renders ~262x72px (small luminous mark inside the spiral). Spiral is parametric continuous logarithmic (Spiral.jsx buildSpiralPath, 2.6 turns, jitter 0.6). Salvix is now pure typography — no MatteTube/GlassJar/GlassTube components remain. Test-script gotchas: (1) text_content() concatenates inline children without spaces — for the positioning headline use inner_text() and normalize whitespace ('Recovery is the\\nnew standard.'); (2) Instagram link is rendered uppercase via CSS — assert case-insensitively. Backend artist-applications schema: {full_name, email, statement (min 20 chars)} required; years_experience expects string, not int.",
+  "rca of the issue": "No defects. Two initial test failures (positioning_headline, footer_instagram) were resolved as test-script artifacts: element.text_content() strips inline whitespace across line-break children, and CSS text-transform:uppercase changes rendered casing while DOM source remains '@inque.rituals'. Re-run with inner_text() and case-insensitive comparison yielded 35/35 pass."
+}

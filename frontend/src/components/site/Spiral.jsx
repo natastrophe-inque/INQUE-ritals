@@ -1,16 +1,38 @@
 /**
- * SnailSpiral — three nested open C-arcs forming a real shell silhouette,
- * matching the INQUE reference imagery. Variable stroke widths (thick→thin),
- * no glow, no orbital ring effect.
+ * SnailSpiral — continuous, hand-drawn, imperfect logarithmic spiral.
+ * Parametrically generated for an organic shell-fossil feel, then layered
+ * with a soft offset shadow path for the embossed-emerging-from-darkness look.
+ * No vector glow, no orbital rings.
  */
+import { useMemo } from "react";
+
+function buildSpiralPath({ cx = 100, cy = 100, rStart = 78, rEnd = 6, turns = 2.6, steps = 220, jitter = 0.6 }) {
+  let d = "";
+  for (let i = 0; i <= steps; i++) {
+    const t = i / steps;
+    // gentle non-linear taper so the spiral feels softly logarithmic
+    const r = rStart * Math.pow(rEnd / rStart, t);
+    const angle = t * Math.PI * 2 * turns - Math.PI / 2;
+    // tiny radial jitter to break perfect-vector geometry
+    const j = jitter * (Math.sin(angle * 3.1) + Math.cos(angle * 5.2)) * 0.5;
+    const x = cx + Math.cos(angle) * (r + j);
+    const y = cy + Math.sin(angle) * (r + j);
+    d += i === 0 ? `M ${x.toFixed(2)} ${y.toFixed(2)} ` : `L ${x.toFixed(2)} ${y.toFixed(2)} `;
+  }
+  return d;
+}
+
 export default function Spiral({
   size = 200,
   stroke = "#2E3F34",
-  strokeWidth = 1, // base; outer arc multiplies, inner arcs divide
-  opacity = 0.6,
+  strokeWidth = 0.7,
+  opacity = 0.4,
   rotate = false,
   className = "",
 }) {
+  const main = useMemo(() => buildSpiralPath({}), []);
+  const shadow = useMemo(() => buildSpiralPath({ rStart: 80, jitter: 0.9 }), []);
+
   return (
     <svg
       viewBox="0 0 200 200"
@@ -21,23 +43,26 @@ export default function Spiral({
       style={{ opacity, overflow: "visible" }}
       aria-hidden
     >
-      <g fill="none" stroke={stroke} strokeLinecap="round">
-        {/* Outer arc — thickest, opens at bottom-left */}
-        <path
-          d="M 152 78 A 72 72 0 1 1 78 152"
-          strokeWidth={strokeWidth * 3}
-        />
-        {/* Middle arc */}
-        <path
-          d="M 140 88 A 52 52 0 1 1 88 140"
-          strokeWidth={strokeWidth * 2}
-        />
-        {/* Inner arc — thinnest */}
-        <path
-          d="M 126 100 A 32 32 0 1 1 100 126"
-          strokeWidth={strokeWidth * 1.2}
-        />
-      </g>
+      {/* Soft shadow / depth path underneath */}
+      <path
+        d={shadow}
+        fill="none"
+        stroke={stroke}
+        strokeOpacity="0.35"
+        strokeWidth={strokeWidth * 2.4}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        style={{ filter: "blur(1.4px)" }}
+      />
+      {/* Main spiral line — thin, elegant */}
+      <path
+        d={main}
+        fill="none"
+        stroke={stroke}
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -45,13 +70,13 @@ export default function Spiral({
 export function SpiralDivider({ className = "" }) {
   return (
     <div className={`flex items-center gap-6 ${className}`}>
-      <span className="flex-1 h-px bg-[rgba(75,95,79,0.16)]" />
-      <Spiral size={26} strokeWidth={0.7} opacity={0.7} stroke="#4B5F4F" />
-      <span className="flex-1 h-px bg-[rgba(75,95,79,0.16)]" />
+      <span className="flex-1 h-px bg-[rgba(75,95,79,0.12)]" />
+      <Spiral size={22} strokeWidth={0.5} opacity={0.55} stroke="#4B5F4F" />
+      <span className="flex-1 h-px bg-[rgba(75,95,79,0.12)]" />
     </div>
   );
 }
 
 export function SpiralMark({ size = 22, className = "" }) {
-  return <Spiral size={size} strokeWidth={0.8} opacity={0.75} stroke="#4B5F4F" className={className} />;
+  return <Spiral size={size} strokeWidth={0.6} opacity={0.65} stroke="#4B5F4F" className={className} />;
 }
