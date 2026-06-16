@@ -1,0 +1,61 @@
+import { ScrollReveal } from '@/components/ui/ScrollReveal'
+
+export default function FounderSection() {
+  return (
+    <section
+      id="founder"
+      data-component="src/components/FounderSection.tsx"
+      className="relative bg-black py-24 md:py-36"
+    >
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          <ScrollReveal>
+            <div className="mb-4">
+              <span className="text-xs tracking-[0.25em] uppercase text-iridescent-light font-sans font-light">
+                Origins
+              </span>
+            </div>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif text-bone leading-tight mb-8">
+              Born in the tattoo
+              <br />
+              <span className="italic">industry.</span>
+              <br />
+              Built for
+              <br />
+              <span className="italic">recovery.</span>
+            </h2>
+            <p className="text-base md:text-lg text-silver-muted/80 font-sans font-light leading-relaxed mb-6 max-w-lg">
+              Created by a tattoo artist who experienced firsthand how limited recovery products had become, SALVIX was developed to bridge the gap between luxury skincare and modern tattoo aftercare.
+            </p>
+            <p className="text-base text-silver-muted/60 font-sans font-light leading-relaxed max-w-lg italic">
+              We believe recovery deserves the same level of innovation as the procedures that make it necessary.
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={200}>
+            <div className="relative">
+              <div className="aspect-[3/4] bg-deep-green/20 flex items-center justify-center overflow-hidden">
+                <div className="text-center p-12">
+                  <div className="w-16 h-16 mx-auto mb-6 rounded-full border border-iridescent/30 flex items-center justify-center">
+                    <span className="text-2xl font-serif text-iridescent-light italic">I</span>
+                  </div>
+                  <p className="text-sm text-silver-muted/50 font-sans font-light leading-relaxed">
+                    INQUE
+                  </p>
+                  <p className="text-xs text-iridescent-light/40 font-sans font-light tracking-[0.2em] uppercase mt-2">
+                    Est. 2025
+                  </p>
+                </div>
+              </div>
+              <div className="absolute -top-3 -left-3 w-16 h-16 border-t border-l border-iridescent/20" />
+              <div className="absolute -bottom-3 -right-3 w-16 h-16 border-b border-r border-iridescent/20" />
+            </div>
+          </ScrollReveal>
+        </div>
+      </div>
+
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-iridescent/20 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-iridescent/10 to-transparent" />
+    </section>
+  )
+}
