@@ -1,0 +1,18 @@
+{
+  "brand": "SALVIX by INQUE",
+  "domain": "inquerituals.com",
+  "palette": {
+    "primary": "iridescent",
+    "background": "obsidian-900",
+    "surface": "obsidian-800",
+    "text": "bone-50",
+    "textMuted": "silver-500",
+    "accent": "iridescent"
+  },
+  "typography": {
+    "display": "Cormorant Garamond",
+    "body": "Inter",
+    "mono": "JetBrains Mono"
+  },
+  "tone": "elevated, scientific, aspirational, minimal"
+}
