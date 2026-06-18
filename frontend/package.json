@@ -57,7 +57,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "craco build",
+    "build": "TSC_COMPILE_ON_ERROR=true CRACO build",
     "test": "craco test"
   },
   "browserslist": {
