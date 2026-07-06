@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { supabase } from '../lib/supabase'
+import { supabase, initializeSupabase } from '../lib/supabase'
 
 interface UseTableOptions {
   table: string
@@ -21,6 +21,13 @@ export function useTable<T extends Record<string, unknown>>({
   const fetch = useCallback(async () => {
     setLoading(true)
     setError(null)
+
+    if (!initializeSupabase() || !supabase) {
+      setError('Database connection not available')
+      setLoading(false)
+      return
+    }
+
     try {
       const { data: result, error: err } = await supabase
         .from(table)
