@@ -49,6 +49,9 @@ export default function Hero() {
             style={{
               filter: 'brightness(1.4) saturate(0.6) hue-rotate(160deg)',
             }}
+            onError={(e) => {
+              (e.target as HTMLImageElement).style.display = 'none'
+            }}
           />
         </div>
         <div className="absolute w-[700px] h-[700px] md:w-[1000px] md:h-[1000px] rounded-full border border-iridescent/5 animate-ripple-slow" />
@@ -63,6 +66,9 @@ export default function Hero() {
             src={logoUrl}
             alt="INQUE"
             className="w-64 md:w-80 h-auto object-contain"
+            onError={(e) => {
+              (e.target as HTMLImageElement).style.opacity = '0'
+            }}
           />
         </div>
 
@@ -90,7 +96,7 @@ export default function Hero() {
           </a>
           <a
             href="#science"
-            className="px-10 py-3.5 text-sm tracking-[0.15em] uppercase text-silver-muted hover:text-bone font-sans font-light transition-colors duration-300 border border-transparent hover:border-iridescent/20"
+            className="px-10 py-3.5 text-sm tracking-[0.15em] uppercase text-silver-muted hover:text-bone font-sans font-light transition-colors duration-300 border border-transparent hover:border-silver-muted/30"
           >
             Explore the Science
           </a>

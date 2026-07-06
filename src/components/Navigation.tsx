@@ -43,6 +43,9 @@ export function Navigation() {
               src={logoUrl}
               alt="INQUE"
               className="h-7 w-auto"
+              onError={(e) => {
+                (e.target as HTMLImageElement).style.display = 'none'
+              }}
             />
           </a>
 
@@ -58,7 +61,7 @@ export function Navigation() {
             ))}
             <a
               href="#waitlist"
-              className="text-sm tracking-[0.15em] uppercase text-iridescent-light hover:text-bone border border-iridescent/30 hover:border-bone/40 px-5 py-2 transition-all duration-300 font-sans font-light"
+              className="text-sm tracking-[0.15em] uppercase text-iridescent-light hover:text-bone border border-iridescent/30 hover:border-bone/40 px-5 py-2 transition-all duration-300 font-sans"
             >
               Waitlist
             </a>
@@ -111,6 +114,9 @@ export function Navigation() {
             src={logoUrl}
             alt="INQUE"
             className="h-14 w-auto hover:opacity-100 transition-opacity duration-300"
+            onError={(e) => {
+              (e.target as HTMLImageElement).style.display = 'none'
+            }}
           />
         </a>
       </div>
