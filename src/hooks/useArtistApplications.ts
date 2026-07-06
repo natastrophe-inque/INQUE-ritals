@@ -1,11 +1,6 @@
 import { useState } from 'react'
 import { supabase } from '../lib/supabase'
-
-interface ArtistFormData {
-  name: string
-  studio: string
-  city: string
-}
+import type { ArtistFormData } from '../types'
 
 export function useArtistApplications() {
   const [loading, setLoading] = useState(false)
@@ -19,7 +14,7 @@ export function useArtistApplications() {
     try {
       const { error: err } = await supabase
         .from('artist_applications')
-        .insert(data)
+        .insert([data])
 
       if (err) throw err
       setSuccess(true)

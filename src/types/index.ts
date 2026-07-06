@@ -12,6 +12,24 @@ export interface ArtistApplication {
   created_at: string
 }
 
+export interface FeatureCard {
+  title: string
+  description: string
+  icon?: string
+}
+
+export interface TraumaType {
+  title: string
+  description: string
+  icon?: string
+}
+
+export interface Ingredient {
+  name: string
+  percentage: number
+  description: string
+}
+
 export type SectionId =
   | 'hero'
   | 'science'
@@ -20,3 +38,9 @@ export type SectionId =
   | 'founder'
   | 'artist-program'
   | 'final-cta'
+
+export interface ArtistFormData {
+  name: string
+  studio: string
+  city: string
+}
