@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { supabase } from '../lib/supabase'
+import { supabase, initializeSupabase } from '../lib/supabase'
 import type { ArtistFormData } from '../types'
 
 export function useArtistApplications() {
@@ -11,8 +11,15 @@ export function useArtistApplications() {
     setLoading(true)
     setError(null)
     setSuccess(false)
+
+    if (!initializeSupabase()) {
+      setError('Form submissions are not yet available. Please check back soon.')
+      setLoading(false)
+      return
+    }
+
     try {
-      const { error: err } = await supabase
+      const { error: err } = await supabase!
         .from('artist_applications')
         .insert(data as never)
 

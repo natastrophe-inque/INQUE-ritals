@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { supabase } from '../lib/supabase'
+import { supabase, initializeSupabase } from '../lib/supabase'
 
 export function useWaitlist() {
   const [loading, setLoading] = useState(false)
@@ -10,8 +10,15 @@ export function useWaitlist() {
     setLoading(true)
     setError(null)
     setSuccess(false)
+
+    if (!initializeSupabase()) {
+      setError('Form submissions are not yet available. Please check back soon.')
+      setLoading(false)
+      return
+    }
+
     try {
-      const { error: err } = await supabase
+      const { error: err } = await supabase!
         .from('waitlist')
         .insert({ email } as never)
 
