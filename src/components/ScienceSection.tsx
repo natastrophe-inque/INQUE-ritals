@@ -4,7 +4,7 @@ import type { FeatureCard } from '@/types'
 const cards: FeatureCard[] = [
   {
     title: 'Barrier Repair',
-    description: 'Supports the skin's protective barrier when trauma leaves it compromised.',
+    description: 'Supports the skin\'s protective barrier when trauma leaves it compromised.',
     icon: 'shield',
   },
   {
