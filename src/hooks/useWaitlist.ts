@@ -13,7 +13,7 @@ export function useWaitlist() {
     try {
       const { error: err } = await supabase
         .from('waitlist')
-        .insert([{ email }])
+        .insert({ email } as never)
 
       if (err) {
         if (err.code === '23505') {

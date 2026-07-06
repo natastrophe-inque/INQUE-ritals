@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
 import { useArtistApplications } from '@/hooks/useArtistApplications'
-import type { ArtistFormData } from '@/types'
 
 export default function ArtistProgramSection() {
   const [name, setName] = useState('')

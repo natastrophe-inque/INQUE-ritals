@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { supabase } from '../lib/supabase'
 
-interface UseTableOptions<T> {
+interface UseTableOptions {
   table: string
   select?: string
   orderBy?: string
@@ -13,7 +13,7 @@ export function useTable<T extends Record<string, unknown>>({
   select = '*',
   orderBy = 'created_at',
   ascending = false,
-}: UseTableOptions<T>) {
+}: UseTableOptions) {
   const [data, setData] = useState<T[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)

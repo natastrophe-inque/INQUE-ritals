@@ -14,7 +14,7 @@ export function useArtistApplications() {
     try {
       const { error: err } = await supabase
         .from('artist_applications')
-        .insert([data])
+        .insert(data as never)
 
       if (err) throw err
       setSuccess(true)
