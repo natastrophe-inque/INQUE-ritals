@@ -4,7 +4,7 @@ import type { FeatureCard } from '@/types'
 const cards: FeatureCard[] = [
   {
     title: 'Barrier Repair',
-    description: 'Supports the skin\u2019s protective barrier when trauma leaves it compromised.',
+    description: 'Supports the skin's protective barrier when trauma leaves it compromised.',
     icon: 'shield',
   },
   {
@@ -24,7 +24,9 @@ const cards: FeatureCard[] = [
   },
 ]
 
-function FeatureIcon({ icon }: { icon: string }) {
+function FeatureIcon({ icon }: { icon?: string }) {
+  if (!icon) return null
+  
   const paths: Record<string, JSX.Element> = {
     shield: (
       <path

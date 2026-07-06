@@ -1,19 +1,20 @@
 import { useState } from 'react'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
 import { useArtistApplications } from '@/hooks/useArtistApplications'
+import type { ArtistFormData } from '@/types'
 
 export default function ArtistProgramSection() {
   const [name, setName] = useState('')
   const [studio, setStudio] = useState('')
   const [city, setCity] = useState('')
   const [submitted, setSubmitted] = useState(false)
-  const { insert, loading, error } = useArtistApplications()
+  const { submit, loading, error } = useArtistApplications()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!name || !studio || !city) return
-    const result = await insert({ name, studio, city } as Record<string, unknown> & { name: string; studio: string; city: string })
-    if (result) setSubmitted(true)
+    await submit({ name, studio, city })
+    setSubmitted(true)
   }
 
   return (

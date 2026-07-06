@@ -15,7 +15,7 @@ export interface ArtistApplication {
 export interface FeatureCard {
   title: string
   description: string
-  icon?: string
+  icon: string
 }
 
 export interface TraumaType {
@@ -26,8 +26,9 @@ export interface TraumaType {
 
 export interface Ingredient {
   name: string
-  percentage: number
-  description: string
+  subtitle: string
+  percentage?: number
+  description?: string
 }
 
 export type SectionId =

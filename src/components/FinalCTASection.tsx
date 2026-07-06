@@ -5,13 +5,13 @@ import { useWaitlist } from '@/hooks/useWaitlist'
 export default function FinalCTASection() {
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
-  const { insert, loading, error } = useWaitlist()
+  const { join, loading, error } = useWaitlist()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!email) return
-    const result = await insert({ email } as Record<string, unknown> & { email: string })
-    if (result) setSubmitted(true)
+    await join(email)
+    setSubmitted(true)
   }
 
   return (
