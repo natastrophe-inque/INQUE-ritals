@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { supabase, initializeSupabase } from '../lib/supabase'
 
 export function useWaitlist() {
   const [loading, setLoading] = useState(false)
@@ -11,22 +10,20 @@ export function useWaitlist() {
     setError(null)
     setSuccess(false)
 
-    if (!initializeSupabase()) {
-      setError('Form submissions are not yet available. Please check back soon.')
-      setLoading(false)
-      return
-    }
-
     try {
-      const { error: err } = await supabase!
-        .from('waitlist')
-        .insert({ email } as never)
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
 
-      if (err) {
-        if (err.code === '23505') {
+      const result = await response.json()
+
+      if (!response.ok) {
+        if (result.message?.includes('already')) {
           setError('This email is already on the waitlist.')
         } else {
-          throw err
+          throw new Error(result.message || 'Failed to join waitlist')
         }
       } else {
         setSuccess(true)

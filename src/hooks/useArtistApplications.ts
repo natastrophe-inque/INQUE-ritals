@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { supabase, initializeSupabase } from '../lib/supabase'
 import type { ArtistFormData } from '../types'
 
 export function useArtistApplications() {
@@ -12,18 +11,19 @@ export function useArtistApplications() {
     setError(null)
     setSuccess(false)
 
-    if (!initializeSupabase()) {
-      setError('Form submissions are not yet available. Please check back soon.')
-      setLoading(false)
-      return
-    }
-
     try {
-      const { error: err } = await supabase!
-        .from('artist_applications')
-        .insert(data as never)
+      const response = await fetch('/api/artist-application', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
 
-      if (err) throw err
+      const result = await response.json()
+
+      if (!response.ok) {
+        throw new Error(result.message || 'Failed to submit application')
+      }
+
       setSuccess(true)
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Something went wrong. Please try again.')
