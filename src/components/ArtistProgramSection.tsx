@@ -6,13 +6,14 @@ export default function ArtistProgramSection() {
   const [name, setName] = useState('')
   const [studio, setStudio] = useState('')
   const [city, setCity] = useState('')
+  const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const { submit, loading, error } = useArtistApplications()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!name || !studio || !city) return
-    await submit({ name, studio, city })
+    if (!name || !studio || !city || !email) return
+    await submit({ name, studio, city, email })
     setSubmitted(true)
   }
 
@@ -79,6 +80,22 @@ export default function ArtistProgramSection() {
                       onChange={(e) => setName(e.target.value)}
                       className="w-full bg-transparent py-3 text-sm text-bone font-sans font-light placeholder-silver-muted/30 focus:outline-none"
                       placeholder="Your name"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs tracking-[0.2em] uppercase text-iridescent-light font-sans font-light mb-3">
+                    Email
+                  </label>
+                  <div className="border-b border-iridescent/20 focus-within:border-iridescent/60 transition-colors duration-300">
+                    <input
+                      type="email"
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="w-full bg-transparent py-3 text-sm text-bone font-sans font-light placeholder-silver-muted/30 focus:outline-none"
+                      placeholder="your@email.com"
                     />
                   </div>
                 </div>
