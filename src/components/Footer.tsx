@@ -4,7 +4,7 @@ export function Footer() {
   return (
     <footer
       data-component="src/components/Footer.tsx"
-      className="border-t border-iridescent/10 bg-black"
+      className="border-t border-forest-accent/10 bg-black"
     >
       <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
@@ -45,7 +45,7 @@ export function Footer() {
           </p>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-iridescent/5">
+        <div className="mt-12 pt-8 border-t border-forest-accent/5">
           <p className="text-center text-xs text-silver-muted/40 font-sans font-light tracking-wide">
             Recovery, refined.
           </p>

@@ -23,14 +23,14 @@ export default function FinalCTASection() {
         <ScrollReveal>
           <div className="text-center mb-12">
             <div className="mb-4">
-              <span className="text-xs tracking-[0.25em] uppercase text-iridescent-light font-sans font-light">
+              <span className="text-xs tracking-[0.25em] uppercase text-forest-light font-sans font-light">
                 Join Us
               </span>
             </div>
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif text-bone leading-tight mb-6">
-              The Future of
+              The Future
               <br />
-              <span className="italic">Recovery.</span>
+              <span className="italic">of Recovery.</span>
             </h2>
             <p className="text-base md:text-lg text-silver-muted/80 font-sans font-light leading-relaxed max-w-2xl mx-auto">
               SALVIX is coming. Be first to know when we launch.
@@ -41,10 +41,10 @@ export default function FinalCTASection() {
         <ScrollReveal delay={200}>
           <form onSubmit={handleSubmit} className="glass-panel p-8 md:p-12 max-w-lg mx-auto">
             <div className="mb-8">
-              <label className="block text-xs tracking-[0.2em] uppercase text-iridescent-light font-sans font-light mb-4">
+              <label className="block text-xs tracking-[0.2em] uppercase text-forest-light font-sans font-light mb-4">
                 Email Address
               </label>
-              <div className="border-b border-iridescent/20 focus-within:border-iridescent/60 transition-colors duration-300">
+              <div className="border-b border-forest-accent/20 focus-within:border-forest-accent/60 transition-colors duration-300">
                 <input
                   type="email"
                   required
@@ -60,7 +60,7 @@ export default function FinalCTASection() {
 
             {success ? (
               <div className="text-center py-4">
-                <p className="text-sm text-iridescent-light font-sans font-light">
+                <p className="text-sm text-forest-light font-sans font-light">
                   ✓ You're on the list
                 </p>
               </div>
@@ -77,7 +77,7 @@ export default function FinalCTASection() {
         </ScrollReveal>
       </div>
 
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-iridescent/20 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-forest-accent/20 to-transparent" />
     </section>
   )
 }
