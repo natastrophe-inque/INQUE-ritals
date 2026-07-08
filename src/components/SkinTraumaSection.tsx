@@ -1,22 +1,31 @@
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
-import type { TraumaType } from '@/types'
+
+interface TraumaType {
+  number: string
+  title: string
+  description: string
+}
 
 const traumaTypes: TraumaType[] = [
   {
+    number: '01',
     title: 'Tattoo Recovery',
-    description: 'Fresh ink places extraordinary demands on the skin, requiring targeted support during the critical healing window.',
+    description: 'Support skin through the full tattoo healing cycle.',
   },
   {
+    number: '02',
     title: 'Barrier Damage',
-    description: 'Environmental exposure and daily stress weaken the skin\u2019s natural defenses over time.',
+    description: 'Restore compromised protective barriers.',
   },
   {
+    number: '03',
     title: 'Irritation & Redness',
-    description: 'Support for skin experiencing visible stress, discomfort, and sensitivity.',
+    description: 'Calm reactive and inflamed skin.',
   },
   {
-    title: 'Post-Procedure Care',
-    description: 'Designed for recovery periods when skin requires additional support beyond standard aftercare.',
+    number: '04',
+    title: 'Post-Procedure',
+    description: 'Recovery care for all skin procedures.',
   },
 ]
 
@@ -28,27 +37,26 @@ export default function SkinTraumaSection() {
     >
       <div className="mx-auto max-w-7xl px-6">
         <ScrollReveal>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif text-bone leading-tight mb-16 text-center">
-            Skin trauma takes
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif text-bone leading-tight mb-16">
+            Skin trauma
             <br />
-            <span className="italic">many forms.</span>
+            <span className="italic">takes many forms.</span>
           </h2>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-iridescent/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {traumaTypes.map((item, i) => (
-            <ScrollReveal key={item.title} delay={i * 120}>
-              <div className="bg-black p-8 md:p-12 group hover:bg-obsidian transition-colors duration-700">
-                <div className="mb-6">
-                  <span className="text-xs tracking-[0.2em] uppercase text-iridescent-light/60 font-sans font-light">
-                    {String(i + 1).padStart(2, '0')}
+            <ScrollReveal key={item.number} delay={i * 100}>
+              <div className="group">
+                <div className="flex items-baseline gap-4 mb-4">
+                  <span className="text-3xl md:text-4xl font-serif text-forest-accent/40 font-light">
+                    {item.number}
                   </span>
+                  <h3 className="text-xl md:text-2xl font-serif text-bone">
+                    {item.title}
+                  </h3>
                 </div>
-                <h3 className="text-xl md:text-2xl font-serif text-bone mb-4">
-                  {item.title}
-                </h3>
-                <div className="line-accent mb-5" />
-                <p className="text-sm text-silver-muted/70 font-sans font-light leading-relaxed max-w-sm">
+                <p className="text-sm md:text-base text-silver-muted/70 font-sans font-light leading-relaxed ml-16">
                   {item.description}
                 </p>
               </div>
@@ -57,8 +65,7 @@ export default function SkinTraumaSection() {
         </div>
       </div>
 
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-iridescent/20 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-iridescent/10 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-forest-accent/20 to-transparent" />
     </section>
   )
 }

@@ -54,8 +54,8 @@ export default function Hero() {
             }}
           />
         </div>
-        <div className="absolute w-[700px] h-[700px] md:w-[1000px] md:h-[1000px] rounded-full border border-iridescent/5 animate-ripple-slow" />
-        <div className="absolute w-[900px] h-[900px] md:w-[1200px] md:h-[1200px] rounded-full border border-iridescent/[0.03] animate-ripple-reverse" />
+        <div className="absolute w-[700px] h-[700px] md:w-[1000px] md:h-[1000px] rounded-full border border-forest-accent/5 animate-ripple-slow" />
+        <div className="absolute w-[900px] h-[900px] md:w-[1200px] md:h-[1200px] rounded-full border border-forest-accent/[0.03] animate-ripple-reverse" />
       </div>
 
       <div className="absolute inset-0 bg-dark-radial opacity-80" />
@@ -83,7 +83,7 @@ export default function Hero() {
         </p>
 
         <p className="max-w-lg text-sm md:text-base text-silver-muted/80 font-sans font-light leading-relaxed mb-12 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-          SALVIX is an advanced biotech recovery balm designed to support compromised skin through tattoo recovery, barrier damage, irritation, and environmental stress.
+          Advanced biotech balm for compromised skin. Tattoo recovery, barrier damage, irritation, post-procedure care.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-4 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
@@ -96,7 +96,7 @@ export default function Hero() {
           </a>
           <a
             href="#science"
-            className="px-10 py-3.5 text-sm tracking-[0.15em] uppercase text-silver-muted hover:text-bone font-sans font-light transition-colors duration-300 border border-transparent hover:border-silver-muted/30"
+            className="px-10 py-3.5 text-sm tracking-[0.15em] uppercase text-silver-muted hover:text-bone font-sans font-light transition-colors duration-300 border border-transparent hover:border-forest-accent/30"
           >
             Explore the Science
           </a>

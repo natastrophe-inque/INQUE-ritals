@@ -4,22 +4,22 @@ import type { FeatureCard } from '@/types'
 const cards: FeatureCard[] = [
   {
     title: 'Barrier Repair',
-    description: 'Supports the skin\'s protective barrier when trauma leaves it compromised.',
+    description: 'Supports the skin\'s protective barrier through trauma.',
     icon: 'shield',
   },
   {
     title: 'Biotech Actives',
-    description: 'Advanced peptides and recovery-focused ingredients selected for performance.',
+    description: 'Advanced peptides and recovery-focused ingredients.',
     icon: 'flask',
   },
   {
-    title: 'Hydration Architecture',
-    description: 'Multi-layer moisture support designed to help stressed skin retain hydration.',
+    title: 'Hydration',
+    description: 'Multi-layer moisture support for stressed skin.',
     icon: 'droplet',
   },
   {
     title: 'Recovery Focused',
-    description: 'Created specifically for periods of irritation, sensitivity, and healing.',
+    description: 'Designed for irritation, sensitivity, and healing.',
     icon: 'pulse',
   },
 ]
@@ -65,7 +65,7 @@ function FeatureIcon({ icon }: { icon?: string }) {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      className="text-iridescent"
+      className="text-forest-accent"
     >
       {paths[icon]}
     </svg>
@@ -82,24 +82,24 @@ export default function ScienceSection() {
       <div className="mx-auto max-w-7xl px-6">
         <ScrollReveal>
           <div className="mb-4">
-            <span className="text-xs tracking-[0.25em] uppercase text-iridescent-light font-sans font-light">
+            <span className="text-xs tracking-[0.25em] uppercase text-forest-light font-sans font-light">
               Why SALVIX
             </span>
           </div>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif text-bone leading-tight mb-6">
-            The science beneath
+            The science
             <br />
-            <span className="italic">the ritual.</span>
+            <span className="italic">beneath the ritual.</span>
           </h2>
           <p className="max-w-xl text-base md:text-lg text-silver-muted/80 font-sans font-light leading-relaxed mb-16">
-            Luxury should not come at the expense of efficacy. SALVIX combines modern skin science with recovery-focused formulation to support skin when it is most vulnerable.
+            Modern skin science with recovery-focused formulation. Efficacy meets luxury.
           </p>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-iridescent/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-forest-accent/10">
           {cards.map((card, i) => (
             <ScrollReveal key={card.title} delay={i * 100}>
-              <div className="bg-obsidian p-8 md:p-10 group hover:bg-deep-green/50 transition-colors duration-700">
+              <div className="bg-obsidian p-8 md:p-10 group hover:bg-forest-deep/30 transition-colors duration-700">
                 <div className="mb-5">
                   <FeatureIcon icon={card.icon} />
                 </div>
@@ -116,7 +116,7 @@ export default function ScienceSection() {
         </div>
       </div>
 
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-iridescent/20 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-forest-accent/20 to-transparent" />
     </section>
   )
 }
