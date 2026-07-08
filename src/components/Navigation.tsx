@@ -9,7 +9,7 @@ export function Navigation() {
     const handleScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, []);
+  }, [])
 
   const links = [
     { label: 'Science', href: '#science' },
@@ -22,13 +22,20 @@ export function Navigation() {
     <>
       {/* Fixed INQUE text mark - top left */}
       <div
-        className={cn(
-          'fixed top-6 left-6 z-30 transition-all duration-700',
-          'text-sm tracking-[0.3em] uppercase font-sans font-light',
-          'bg-gradient-to-r from-forest-deep via-forest-rich to-forest-accent',
-          'bg-clip-text text-transparent',
-          'pointer-events-none'
-        )}
+        className="fixed z-30 transition-all duration-700 pointer-events-none"
+        style={{
+          top: '1.5rem',
+          left: '1.5rem',
+          fontSize: 'clamp(0.875rem, 2.5vw, 1.125rem)',
+          letterSpacing: '0.2em',
+          fontWeight: 500,
+          textTransform: 'uppercase',
+          background: 'linear-gradient(135deg, #1F5C47 0%, #3F8F68 50%, #7A8F74 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          opacity: 0.85,
+        }}
         aria-hidden="true"
       >
         INQUE
