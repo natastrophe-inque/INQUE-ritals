@@ -9,9 +9,7 @@ export function Navigation() {
     const handleScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  const logoUrl = 'https://storage.googleapis.com/figapp-44eac.appspot.com/chat-attachments/r3WdwFyRdNZyvkZVSQVC0wEW5J13/5721d477-3d95-4df8-b4b7-d9046eda000f/images/1781646464680-lzqm5qp7mws.jpg'
+  }, []);
 
   const links = [
     { label: 'Science', href: '#science' },
@@ -22,32 +20,32 @@ export function Navigation() {
 
   return (
     <>
+      {/* Fixed INQUE text mark - top left */}
+      <div
+        className={cn(
+          'fixed top-6 left-6 z-30 transition-all duration-700',
+          'text-sm tracking-[0.3em] uppercase font-sans font-light',
+          'bg-gradient-to-r from-forest-deep via-forest-rich to-forest-accent',
+          'bg-clip-text text-transparent',
+          'pointer-events-none'
+        )}
+        aria-hidden="true"
+      >
+        INQUE
+      </div>
+
       <header
         data-component="src/components/Navigation.tsx"
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
           scrolled
-            ? 'bg-obsidian/90 backdrop-blur-xl border-b border-iridescent/10'
+            ? 'bg-obsidian/90 backdrop-blur-xl border-b border-forest-accent/10'
             : 'bg-transparent'
         )}
       >
         <nav className="mx-auto max-w-7xl flex items-center justify-between px-6 py-5">
-          <a
-            href="#"
-            className={cn(
-              'flex items-center gap-3 transition-all duration-500',
-              scrolled ? 'opacity-100' : 'opacity-0'
-            )}
-          >
-            <img
-              src={logoUrl}
-              alt="INQUE"
-              className="h-7 w-auto"
-              onError={(e) => {
-                (e.target as HTMLImageElement).style.display = 'none'
-              }}
-            />
-          </a>
+          {/* Empty space where logo used to be */}
+          <div className="w-0" />
 
           <div className="hidden md:flex items-center gap-10">
             {links.map((link) => (
@@ -61,7 +59,7 @@ export function Navigation() {
             ))}
             <a
               href="#waitlist"
-              className="text-sm tracking-[0.15em] uppercase text-iridescent-light hover:text-bone border border-iridescent/30 hover:border-bone/40 px-5 py-2 transition-all duration-300 font-sans"
+              className="text-sm tracking-[0.15em] uppercase text-forest-light hover:text-bone border border-forest-accent/30 hover:border-bone/40 px-5 py-2 transition-all duration-300 font-sans"
             >
               Waitlist
             </a>
@@ -79,7 +77,7 @@ export function Navigation() {
         </nav>
 
         {menuOpen && (
-          <div className="md:hidden bg-obsidian/95 backdrop-blur-xl border-t border-iridescent/10 animate-fade-in-down">
+          <div className="md:hidden bg-obsidian/95 backdrop-blur-xl border-t border-forest-accent/10 animate-fade-in-down">
             <div className="flex flex-col px-6 py-8 gap-6">
               {links.map((link) => (
                 <a
@@ -94,7 +92,7 @@ export function Navigation() {
               <a
                 href="#waitlist"
                 onClick={() => setMenuOpen(false)}
-                className="text-sm tracking-[0.15em] uppercase text-iridescent-light border border-iridescent/30 px-5 py-3 text-center transition-all font-sans font-light"
+                className="text-sm tracking-[0.15em] uppercase text-forest-light border border-forest-accent/30 px-5 py-3 text-center transition-all font-sans font-light"
               >
                 Join the Waitlist
               </a>
@@ -102,24 +100,6 @@ export function Navigation() {
           </div>
         )}
       </header>
-
-      <div
-        className={cn(
-          'fixed bottom-8 right-8 z-40 transition-all duration-700',
-          scrolled ? 'opacity-60 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
-        )}
-      >
-        <a href="#" aria-label="Back to top">
-          <img
-            src={logoUrl}
-            alt="INQUE"
-            className="h-14 w-auto hover:opacity-100 transition-opacity duration-300"
-            onError={(e) => {
-              (e.target as HTMLImageElement).style.display = 'none'
-            }}
-          />
-        </a>
-      </div>
     </>
   )
 }

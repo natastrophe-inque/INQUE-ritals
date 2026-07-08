@@ -25,13 +25,13 @@ export default {
           500: '#a8a8b0',
           600: '#888890',
         },
-        iridescent: {
-          DEFAULT: '#7a8c6e',
-          light: '#9aac8e',
-          dark: '#5a6c4e',
-        },
-        green: {
-          nearblack: '#0a1a0a',
+        // New forest green palette - dark, metallic, iridescent, premium
+        forest: {
+          deep: '#0B2F24',        // Deep forest green base
+          rich: '#123D32',        // Rich metallic forest green
+          accent: '#1F5C47',      // Dark emerald accent
+          light: '#7A8F74',       // Muted iridescent highlight
+          muted: '#8FA68A',       // Slightly lighter muted tone
         },
       },
       fontFamily: {
@@ -40,8 +40,9 @@ export default {
         mono: ['"JetBrains Mono"', 'monospace'],
       },
       backgroundImage: {
-        'hero-gradient': 'radial-gradient(ellipse at center, rgba(122,140,110,0.08) 0%, rgba(10,10,10,1) 70%)',
+        'hero-gradient': 'radial-gradient(ellipse at center, rgba(31,92,71,0.08) 0%, rgba(10,10,10,1) 70%)',
         'section-gradient': 'linear-gradient(180deg, #0a0a0a 0%, #0d0d0d 50%, #0a0a0a 100%)',
+        'forest-gradient': 'linear-gradient(135deg, #0B2F24 0%, #123D32 40%, #1F5C47 70%, #7A8F74 100%)',
       },
       animation: {
         'fade-up': 'fadeUp 0.8s ease-out forwards',
