@@ -16,7 +16,7 @@
   }
 
   ::selection {
-    background-color: rgba(74, 124, 111, 0.4);
+    background-color: rgba(31, 92, 71, 0.4);
     color: #E8E3DD;
   }
 
@@ -29,7 +29,7 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #4A7C6F;
+    background: #1F5C47;
     border-radius: 4px;
   }
 
@@ -39,8 +39,8 @@
 }
 
 @layer components {
-  .text-gradient-iridescent {
-    background: linear-gradient(135deg, #8A9A8F 0%, #E8E3DD 40%, #5B8A7A 70%, #C8C8C8 100%);
+  .text-gradient-forest {
+    background: linear-gradient(135deg, #1F5C47 0%, #7A8F74 40%, #8FA68A 70%, #B8C8B0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -49,14 +49,32 @@
   .line-accent {
     width: 40px;
     height: 1px;
-    background: linear-gradient(90deg, #4A7C6F, transparent);
+    background: linear-gradient(90deg, #1F5C47, transparent);
   }
 
   .glass-panel {
     background: rgba(17, 17, 17, 0.6);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(74, 124, 111, 0.08);
+    border: 1px solid rgba(31, 92, 71, 0.12);
+  }
+
+  .fixed-inque-mark {
+    position: fixed;
+    left: 1rem;
+    bottom: 2rem;
+    z-index: 50;
+    font-size: clamp(1.4rem, 3vw, 2.8rem);
+    letter-spacing: 0.18em;
+    font-family: inherit;
+    font-weight: 500;
+    text-transform: uppercase;
+    pointer-events: none;
+    background: linear-gradient(135deg, #1F5C47, #3F8F68, #9FB58A);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    opacity: 0.9;
   }
 
   .reveal-on-scroll {
@@ -68,5 +86,38 @@
   .reveal-on-scroll.visible {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@layer utilities {
+  .animate-ripple-slow {
+    animation: ripple 6s ease-in-out infinite;
+  }
+
+  .animate-ripple-reverse {
+    animation: ripple 8s ease-in-out infinite reverse;
+  }
+
+  .animate-fade-in-down {
+    animation: fadeInDown 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  @keyframes ripple {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.08); opacity: 0.1; }
+  }
+
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 }
