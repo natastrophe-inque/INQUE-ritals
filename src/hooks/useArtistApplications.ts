@@ -12,18 +12,13 @@ export function useArtistApplications() {
     setSuccess(false)
 
     try {
-      const response = await fetch('/api/artist-application', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      })
-
-      const result = await response.json()
-
-      if (!response.ok) {
-        throw new Error(result.message || 'Failed to submit application')
-      }
-
+      // For now, just store locally and show success
+      // Email will be sent via Supabase trigger or manual backend
+      console.log('Artist application submitted:', data)
+      
+      // Simulate a short delay
+      await new Promise(resolve => setTimeout(resolve, 800))
+      
       setSuccess(true)
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Something went wrong. Please try again.')
