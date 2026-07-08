@@ -2,11 +2,11 @@ import { ScrollReveal } from '@/components/ui/ScrollReveal'
 import type { Ingredient } from '@/types'
 
 const ingredients: Ingredient[] = [
-  { name: 'Snail Mucin', subtitle: 'Mucopolysaccharide Regeneration' },
+  { name: 'Snail Mucin', subtitle: 'Regeneration Support' },
   { name: 'Copper Peptides', subtitle: 'Signal-Driven Repair' },
-  { name: 'Centella Asiatica', subtitle: 'Botanical Recovery Support' },
-  { name: 'Ectoin', subtitle: 'Osmolyte Barrier Defence' },
-  { name: 'Panthenol', subtitle: 'Pro-Vitamin B5 Calming' },
+  { name: 'Centella Asiatica', subtitle: 'Botanical Recovery' },
+  { name: 'Ectoin', subtitle: 'Barrier Defence' },
+  { name: 'Panthenol', subtitle: 'Calming Support' },
   { name: 'Ceramides', subtitle: 'Barrier Reinforcement' },
 ]
 
@@ -20,7 +20,7 @@ export default function FormulaSection() {
       <div className="mx-auto max-w-7xl px-6">
         <ScrollReveal>
           <div className="mb-4">
-            <span className="text-xs tracking-[0.25em] uppercase text-iridescent-light font-sans font-light">
+            <span className="text-xs tracking-[0.25em] uppercase text-forest-light font-sans font-light">
               The Formula
             </span>
           </div>
@@ -30,16 +30,16 @@ export default function FormulaSection() {
             <span className="italic">for recovery.</span>
           </h2>
           <p className="max-w-xl text-base md:text-lg text-silver-muted/80 font-sans font-light leading-relaxed mb-16">
-            Six performance-selected ingredients working in concert to support compromised skin through its most vulnerable moments.
+            Six performance-selected ingredients. Together, they support compromised skin through every stage of healing.
           </p>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-iridescent/10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-forest-accent/10">
           {ingredients.map((ingredient, i) => (
             <ScrollReveal key={ingredient.name} delay={i * 80}>
-              <div className="bg-obsidian p-8 md:p-10 group hover:bg-deep-green/30 transition-colors duration-700">
+              <div className="bg-obsidian p-8 md:p-10 group hover:bg-forest-deep/30 transition-colors duration-700">
                 <div className="mb-4">
-                  <span className="text-[10px] tracking-[0.2em] uppercase text-iridescent-light/50 font-sans font-light">
+                  <span className="text-[10px] tracking-[0.2em] uppercase text-forest-light/50 font-sans font-light">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                 </div>
@@ -56,13 +56,13 @@ export default function FormulaSection() {
         </div>
 
         <ScrollReveal delay={400}>
-          <p className="mt-16 text-center text-xs tracking-[0.2em] uppercase text-iridescent-light/50 font-sans font-light">
+          <p className="mt-16 text-center text-xs tracking-[0.2em] uppercase text-forest-light/50 font-sans font-light">
             For the marked.
           </p>
         </ScrollReveal>
       </div>
 
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-iridescent/20 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-forest-accent/20 to-transparent" />
     </section>
   )
 }
