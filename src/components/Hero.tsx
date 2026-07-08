@@ -58,7 +58,12 @@ export default function Hero() {
         <div className="absolute w-[900px] h-[900px] md:w-[1200px] md:h-[1200px] rounded-full border border-forest-accent/[0.03] animate-ripple-reverse" />
       </div>
 
-      <div className="absolute inset-0 bg-dark-radial opacity-80" />
+      <div
+        className="absolute inset-0 opacity-80 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse at center, rgba(31,92,71,0.08) 0%, rgba(10,10,10,1) 70%)',
+        }}
+      />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 py-32 flex flex-col items-center text-center">
         <div className="mb-12 animate-fade-in-down">
