@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react'
 import { Navigation } from '@/components/Navigation'
 import { Footer } from '@/components/Footer'
 import Hero from '@/components/Hero'
@@ -22,6 +23,7 @@ export default function App() {
         <FinalCTASection />
       </main>
       <Footer />
+      <Analytics />
     </div>
   )
 }
