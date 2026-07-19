@@ -70,11 +70,33 @@
     font-weight: 500;
     text-transform: uppercase;
     pointer-events: none;
-    background: linear-gradient(135deg, #1F5C47, #3F8F68, #9FB58A);
+    line-height: 1;
+
+    background: linear-gradient(
+      135deg,
+      #0d3d28 0%,
+      #1a6640 20%,
+      #2eb86a 45%,
+      #52d48e 62%,
+      #8ecfaa 80%,
+      #2e9e60 100%
+    );
     -webkit-background-clip: text;
     background-clip: text;
+    -webkit-text-fill-color: transparent;
     color: transparent;
-    opacity: 0.9;
+
+    opacity: 0.95;
+  }
+
+  @media (max-width: 640px) {
+    .floating-inque-mark {
+      left: 1rem;
+      top: 4.5rem;
+      font-size: clamp(1.3rem, 7vw, 2rem);
+      letter-spacing: 0.22em;
+      opacity: 0.9;
+    }
   }
 
   .reveal-on-scroll {
